@@ -7,12 +7,34 @@ export function tokenIteration(token: WhitehashToken): number | null {
   return null
 }
 
+/**
+ * Whitehash lists Tezos iterations with TzKT `metadata.name.as={name} #*`,
+ * which is case-insensitive — so "Collage" also matches an older "COLLAGE".
+ * Keep only the exact on-chain project name prefix.
+ */
+export function tokenBelongsToProject(
+  token: WhitehashToken,
+  projectName: string | null | undefined,
+): boolean {
+  if (!projectName || !token.name) return false
+  return token.name.startsWith(`${projectName} #`)
+}
+
 export function shouldShowToken(
   token: WhitehashToken,
-  hideIterationsThrough?: number,
+  options: {
+    projectName?: string | null
+    hideIterationsThrough?: number
+  } = {},
 ): boolean {
-  if (hideIterationsThrough == null) return true
+  if (
+    options.projectName &&
+    !tokenBelongsToProject(token, options.projectName)
+  ) {
+    return false
+  }
+  if (options.hideIterationsThrough == null) return true
   const iteration = tokenIteration(token)
   if (iteration == null) return true
-  return iteration > hideIterationsThrough
+  return iteration > options.hideIterationsThrough
 }

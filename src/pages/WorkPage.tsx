@@ -64,23 +64,28 @@ function WorkPageContent({
   const visibleTokens = useMemo(
     () =>
       tokens.filter((token) =>
-        shouldShowToken(token, projectRef.hideIterationsThrough),
+        shouldShowToken(token, {
+          projectName: project?.name,
+          hideIterationsThrough: projectRef.hideIterationsThrough,
+        }),
       ),
-    [tokens, projectRef.hideIterationsThrough],
+    [tokens, project?.name, projectRef.hideIterationsThrough],
   )
 
+  // Whitehash name search is case-insensitive; after exact-name filter we may
+  // need extra pages (e.g. Collage vs older COLLAGE on genesis).
   useEffect(() => {
-    if (!projectRef.hideIterationsThrough) return
+    if (!project?.name) return
     if (loading || !hasMore) return
-    if (visibleTokens.length > 0) return
     if (tokens.length === 0) return
+    if (visibleTokens.length >= 12) return
     void loadMore()
   }, [
-    projectRef.hideIterationsThrough,
+    project?.name,
     loading,
     hasMore,
-    visibleTokens.length,
     tokens.length,
+    visibleTokens.length,
     loadMore,
   ])
 
