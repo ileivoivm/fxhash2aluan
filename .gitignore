@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# WordPress long-form paste snippets (local only; not deployed)
+/chaosResearch.html
+/chaosMemory.html
+/chaosCulture.html
+/collage.html
+/turnerlight.html
