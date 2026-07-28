@@ -23,6 +23,9 @@ export const ARTIST = {
   site: 'https://aluanwang.com',
 } as const
 
+/** GENTK genesis FA2 — Chaos Research */
+export const GENTK_GENESIS = 'KT1KEa8z6vWXDJrVqtMrAeDVzsvxat3kHaCE'
+
 /** GENTK v2 FA2 — Chaos Memory sample */
 export const GENTK_V2 = 'KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi'
 
@@ -33,6 +36,12 @@ export const PROJECTS: CuratedProject[] = [
     chain: 'tezos:mainnet',
     /** First five mints are tests — do not show in the gallery. */
     hideIterationsThrough: 5,
+    /** First non-test edition — cover opens this live view. */
+    sampleToken: {
+      contract: GENTK_GENESIS,
+      tokenId: '269704',
+      iteration: 6,
+    },
   },
   {
     slug: 'chaos-memory',

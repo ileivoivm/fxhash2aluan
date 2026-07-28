@@ -306,8 +306,52 @@ a {
   overflow: hidden;
 }
 
+.work-cover-link {
+  position: relative;
+  display: block;
+  max-width: 280px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.work-cover-link .work-cover {
+  max-width: none;
+  transition: opacity 160ms ease;
+}
+
+.work-cover-link:hover .work-cover,
+.work-cover-link:focus-visible .work-cover {
+  opacity: 0.88;
+}
+
+.work-cover-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.work-cover-link.disabled {
+  pointer-events: none;
+}
+
+.work-cover-cta {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.35rem 0.65rem;
+  background: color-mix(in srgb, #0c0b0a 78%, transparent);
+  border: 1px solid var(--line);
+  color: var(--fg);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
 .work-head-copy {
   min-width: 0;
+}
+
+.work-head-copy .button {
+  cursor: pointer;
+  font: inherit;
 }
 
 .work-head p {

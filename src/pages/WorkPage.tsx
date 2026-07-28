@@ -14,6 +14,7 @@ import {
 import type { ListOrder, WhitehashToken } from '@whitehash/chain-reader'
 import { ProjectCover } from '../components/ProjectCover'
 import { getProject, type CuratedProject } from '../data/projects'
+import { projectCoverPreview } from '../lib/projectCover'
 import { shouldShowToken } from '../lib/tokens'
 
 function ArtworkCard({
@@ -72,8 +73,6 @@ function WorkPageContent({
     [tokens, project?.name, projectRef.hideIterationsThrough],
   )
 
-  // Whitehash name search is case-insensitive; after exact-name filter we may
-  // need extra pages (e.g. Collage vs older COLLAGE on genesis).
   useEffect(() => {
     if (!project?.name) return
     if (loading || !hasMore) return
@@ -100,6 +99,8 @@ function WorkPageContent({
     ? editionsLabel(project.minted, project.editions)
     : ''
   const coverUri = project?.displayUri ?? project?.thumbnailUri ?? null
+  const coverLive = project ? projectCoverPreview(project) : null
+  const coverHref = coverLive ? `/works/${slug}/live` : null
 
   return (
     <main className="page wide">
@@ -110,12 +111,30 @@ function WorkPageContent({
       </nav>
 
       <header className="work-head">
-        <ProjectCover
-          uri={coverUri}
-          chain={projectRef.chain}
-          alt={title}
-          className="work-cover"
-        />
+        {coverHref ? (
+          <Link
+            to={coverHref}
+            className="work-cover-link"
+            aria-label={`Open cover live view · ${title}`}
+          >
+            <ProjectCover
+              uri={coverUri}
+              chain={projectRef.chain}
+              alt={title}
+              className="work-cover"
+            />
+            <span className="work-cover-cta">Run live →</span>
+          </Link>
+        ) : (
+          <div className="work-cover-link disabled">
+            <ProjectCover
+              uri={coverUri}
+              chain={projectRef.chain}
+              alt={title}
+              className="work-cover"
+            />
+          </div>
+        )}
         <div className="work-head-copy">
           <h1>{title}</h1>
           {project?.description ? <p>{project.description}</p> : null}
@@ -123,9 +142,9 @@ function WorkPageContent({
             {projectRef.projectId}
             {label ? ` · ${label}` : ''}
           </p>
-          {projectRef.sampleToken && (
-            <Link className="button" to="/token/chaos-memory-106">
-              Sample · #{projectRef.sampleToken.iteration}
+          {coverHref && (
+            <Link className="button" to={coverHref}>
+              Open cover live
             </Link>
           )}
         </div>

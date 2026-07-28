@@ -3,6 +3,7 @@ import { WhitehashProvider } from '@whitehash/ui'
 import '@whitehash/ui/styles.css'
 import { HomePage } from './pages/HomePage'
 import { WorkPage } from './pages/WorkPage'
+import { ProjectLivePage } from './pages/ProjectLivePage'
 import { TokenPage } from './pages/TokenPage'
 import './App.css'
 
@@ -17,6 +18,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/works/:slug" element={<WorkPage />} />
+            <Route path="/works/:slug/live" element={<ProjectLivePage />} />
             <Route path="/token/chaos-memory-106" element={<TokenPage />} />
             <Route
               path="/token/:contract/:tokenId"
