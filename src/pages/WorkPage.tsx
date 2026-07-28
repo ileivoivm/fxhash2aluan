@@ -12,6 +12,7 @@ import {
   editionsLabel,
 } from '@whitehash/ui'
 import type { ListOrder, WhitehashToken } from '@whitehash/chain-reader'
+import { ProjectCover } from '../components/ProjectCover'
 import { getProject, type CuratedProject } from '../data/projects'
 import { shouldShowToken } from '../lib/tokens'
 
@@ -93,6 +94,7 @@ function WorkPageContent({
   const label = project
     ? editionsLabel(project.minted, project.editions)
     : ''
+  const coverUri = project?.displayUri ?? project?.thumbnailUri ?? null
 
   return (
     <main className="page wide">
@@ -103,17 +105,25 @@ function WorkPageContent({
       </nav>
 
       <header className="work-head">
-        <h1>{title}</h1>
-        {project?.description ? <p>{project.description}</p> : null}
-        <p className="meta">
-          {projectRef.projectId}
-          {label ? ` · ${label}` : ''}
-        </p>
-        {projectRef.sampleToken && (
-          <Link className="button" to="/token/chaos-memory-106">
-            Sample · #{projectRef.sampleToken.iteration}
-          </Link>
-        )}
+        <ProjectCover
+          uri={coverUri}
+          chain={projectRef.chain}
+          alt={title}
+          className="work-cover"
+        />
+        <div className="work-head-copy">
+          <h1>{title}</h1>
+          {project?.description ? <p>{project.description}</p> : null}
+          <p className="meta">
+            {projectRef.projectId}
+            {label ? ` · ${label}` : ''}
+          </p>
+          {projectRef.sampleToken && (
+            <Link className="button" to="/token/chaos-memory-106">
+              Sample · #{projectRef.sampleToken.iteration}
+            </Link>
+          )}
+        </div>
       </header>
 
       <section className="gallery">

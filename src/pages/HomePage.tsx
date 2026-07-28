@@ -1,29 +1,8 @@
 import { Link } from 'react-router-dom'
-import { useGatewayImage, useProject } from '@whitehash/react'
+import { useProject } from '@whitehash/react'
 import { Spinner, editionsLabel } from '@whitehash/ui'
+import { ProjectCover } from '../components/ProjectCover'
 import { ARTIST, PROJECTS, type CuratedProject } from '../data/projects'
-
-function ProjectCover({
-  uri,
-  chain,
-  alt,
-}: {
-  uri: string | null
-  chain: CuratedProject['chain']
-  alt: string
-}) {
-  const { src, onError, failed } = useGatewayImage(uri, chain)
-
-  return (
-    <div className="card-cover">
-      {src && !failed ? (
-        <img src={src} alt={alt} onError={onError} loading="lazy" />
-      ) : (
-        <div className="card-cover-fallback" aria-hidden />
-      )}
-    </div>
-  )
-}
 
 function ProjectCard({ project }: { project: CuratedProject }) {
   const { project: onChain, loading, error } = useProject({
@@ -38,7 +17,12 @@ function ProjectCard({ project }: { project: CuratedProject }) {
 
   return (
     <Link className="card" to={`/works/${project.slug}`}>
-      <ProjectCover uri={coverUri} chain={project.chain} alt={title} />
+      <ProjectCover
+        uri={coverUri}
+        chain={project.chain}
+        alt={title}
+        className="card-cover"
+      />
       <div className="card-body">
         <div className="card-top">
           <h2>{loading ? '…' : title}</h2>

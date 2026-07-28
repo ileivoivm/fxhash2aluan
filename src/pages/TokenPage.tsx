@@ -8,6 +8,7 @@ import {
 import { useToken } from '@whitehash/react'
 import { Artwork, Spinner } from '@whitehash/ui'
 import { GENTK_V2 } from '../data/projects'
+import { objktTokenUrl } from '../lib/objkt'
 
 const SAMPLE = {
   chain: 'tezos:mainnet' as const,
@@ -65,6 +66,7 @@ export function TokenPage() {
 
   const backTo = from ? `/works/${from}` : '/'
   const title = token.name ?? (isSample ? SAMPLE.label : `#${token.tokenId}`)
+  const objktUrl = objktTokenUrl(token.contract, token.tokenId)
 
   return (
     <main className="page wide">
@@ -88,6 +90,14 @@ export function TokenPage() {
             <div className="stage-controls">
               <Artwork.PlayButton playLabel="Run live" stopLabel="Stop" />
               <Artwork.StatusBadge />
+              <a
+                className="objkt-link"
+                href={objktUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View on objkt ↗
+              </a>
             </div>
           </Artwork.Root>
         </div>
@@ -101,9 +111,6 @@ export function TokenPage() {
             ← Back
           </button>
           <h1 className="token-title">{title}</h1>
-          {token.description && (
-            <p className="token-desc">{token.description}</p>
-          )}
           <dl className="token-meta">
             <div>
               <dt>Chain</dt>
@@ -123,6 +130,14 @@ export function TokenPage() {
                 <dd className="mono">{token.iterationHash}</dd>
               </div>
             )}
+            <div>
+              <dt>Marketplace</dt>
+              <dd>
+                <a href={objktUrl} target="_blank" rel="noreferrer">
+                  objkt.com
+                </a>
+              </dd>
+            </div>
           </dl>
           <p className="hint">
             Preview from IPFS. Run live executes the generator with the correct
