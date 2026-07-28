@@ -1,5 +1,37 @@
 import { Link } from 'react-router-dom'
-import { ARTIST, PROJECTS } from '../data/projects'
+import { useProject } from '@whitehash/react'
+import { Spinner, editionsLabel } from '@whitehash/ui'
+import { ARTIST, PROJECTS, type CuratedProject } from '../data/projects'
+
+function ProjectCard({ project }: { project: CuratedProject }) {
+  const { project: onChain, loading, error } = useProject({
+    chain: project.chain,
+    id: project.projectId,
+  })
+
+  const title = onChain?.name ?? project.projectId
+  const description = onChain?.description
+  const editions = editionsLabel(onChain?.minted ?? null, onChain?.editions ?? null)
+
+  return (
+    <Link className="card" to={`/works/${project.slug}`}>
+      <div className="card-top">
+        <h2>{loading ? '…' : title}</h2>
+        <span className="year">{project.projectId}</span>
+      </div>
+      {error ? (
+        <p className="error">{error}</p>
+      ) : description ? (
+        <p className="card-desc">{description}</p>
+      ) : loading ? (
+        <p>
+          <Spinner />
+        </p>
+      ) : null}
+      {editions ? <p className="card-meta">{editions}</p> : null}
+    </Link>
+  )
+}
 
 export function HomePage() {
   return (
@@ -8,8 +40,8 @@ export function HomePage() {
         <p className="eyebrow">fxhash → self-hosted</p>
         <h1>{ARTIST.name}</h1>
         <p className="lede">
-          自己維護的 fxhash 作品庫。鏈上讀取、IPFS 解析、正確 seed 的 live
-          渲染——不依賴 fxhash 平台後端。
+          On-chain fxhash projects via Whitehash. Previews and live renders resolve
+          from Tezos + IPFS — no fxhash platform backend.
         </p>
         <p className="meta">
           <span>{ARTIST.handle}</span>
@@ -22,30 +54,15 @@ export function HomePage() {
 
       <section className="grid" aria-label="Works">
         {PROJECTS.map((project) => (
-          <Link
-            key={project.slug}
-            className="card"
-            to={`/works/${project.slug}`}
-          >
-            <div className="card-top">
-              <h2>{project.title}</h2>
-              <span className="year">{project.year}</span>
-            </div>
-            <p>{project.blurb}</p>
-            <p className="card-meta">
-              {project.editions} editions · {project.projectId}
-            </p>
-          </Link>
+          <ProjectCard key={project.slug} project={project} />
         ))}
       </section>
 
       <section className="proof">
-        <h2>快速驗證 · Chaos Memory #106</h2>
-        <p>
-          用已知的鏈上 token 測試預覽與 Run live。這是「正確展示」的最小證明。
-        </p>
+        <h2>Live check · Chaos Memory #106</h2>
+        <p>Open a known token to verify preview + Run live.</p>
         <Link className="button" to="/token/chaos-memory-106">
-          開啟 sample token →
+          Open sample token →
         </Link>
       </section>
     </main>

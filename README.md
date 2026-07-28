@@ -1,12 +1,12 @@
 # fxhash2aluan
 
-Aluan Wang（ileivoivm）自管的 fxhash 作品展示，基於 [Whitehash](https://whitehash.m3000.io/)。
+Self-hosted fxhash works for Aluan Wang (ileivoivm), powered by [Whitehash](https://whitehash.m3000.io/).
 
-線上：**https://ileivoivm.github.io/fxhash2aluan/**
+Live: **https://ileivoivm.github.io/fxhash2aluan/**
 
-不依賴 fxhash 平台後端：從 Tezos 讀取專案／token，經 IPFS 解析預覽，並以正確 seed 在受限 iframe 中 Run live。
+Reads projects and tokens from Tezos, resolves IPFS previews, and runs correctly seeded live artwork in a sandboxed iframe — no fxhash platform backend.
 
-## 個人網站 iframe
+## Embed on a personal site
 
 ```html
 <iframe
@@ -19,7 +19,7 @@ Aluan Wang（ileivoivm）自管的 fxhash 作品展示，基於 [Whitehash](http
 ></iframe>
 ```
 
-指定作品頁：
+Project page:
 
 ```html
 <iframe
@@ -31,7 +31,7 @@ Aluan Wang（ileivoivm）自管的 fxhash 作品展示，基於 [Whitehash](http
 ></iframe>
 ```
 
-## 開發
+## Develop
 
 ```bash
 cd fxhash2aluan
@@ -39,41 +39,39 @@ npm install
 npm run dev
 ```
 
-本機預設 `base` 仍是 `/fxhash2aluan/`（與 GitHub Pages 一致）。若要根路徑開發：
+Default Vite `base` is `/fxhash2aluan/` (same as GitHub Pages). For root-path local dev:
 
 ```bash
 VITE_BASE_PATH=/ npm run dev
 ```
 
-## 部署
+## Deploy
 
-push 到 `main` 後，GitHub Actions 會建置並發佈到 GitHub Pages。
+Push to `main` → GitHub Actions builds and publishes Pages.
 
-手動：Repository → Settings → Pages → Source: **GitHub Actions**。
+Settings → Pages → Source: **GitHub Actions**.
 
-## 路由
+## Routes
 
-| 路徑 | 說明 |
-|------|------|
-| `/` | 策展作品列表 |
-| `/works/:slug` | 專案 gallery |
-| `/token/chaos-memory-106` | Chaos Memory #106 預覽 + Run live |
-| `/token/:contract/:tokenId` | 任意 GENTK token |
+| Path | Purpose |
+|------|---------|
+| `/` | Curated project list (titles/descriptions from chain) |
+| `/works/:slug` | Project gallery |
+| `/token/chaos-memory-106` | Chaos Memory #106 preview + Run live |
+| `/token/:contract/:tokenId` | Any GENTK token |
 
-## 資料
+## Data
 
-策展清單：`src/data/projects.ts`（自己維護）。
+Curated refs only in `src/data/projects.ts` (slug ↔ on-chain `v2:<id>`). Display copy comes from Whitehash / chain metadata.
 
-目前：
-
-| slug | projectId | editions |
-|------|-----------|----------|
-| chaos-research | `v2:5101` | 256 |
-| chaos-memory | `v2:11068` | 300 |
-| collage-1 | `v2:11805` | 333 |
-| chaos-culture | `v2:13447` | 1024 |
-| turner-light | `v2:17146` | 300 |
-| avlab-23 | `v2:19928` | 48 |
+| slug | projectId |
+|------|-----------|
+| chaos-research | `v2:5101` (hide iterations 1–5) |
+| chaos-memory | `v2:11068` |
+| collage-1 | `v2:11805` |
+| chaos-culture | `v2:13447` |
+| turner-light | `v2:17146` |
+| avlab-23 | `v2:19928` |
 
 ## Stack
 

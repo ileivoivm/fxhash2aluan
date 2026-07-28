@@ -39,8 +39,8 @@ export function TokenPage() {
   if (!input) {
     return (
       <main className="page">
-        <p>缺少 token 參數。</p>
-        <Link to="/">← 回列表</Link>
+        <p>Missing token.</p>
+        <Link to="/">← Works</Link>
       </main>
     )
   }
@@ -49,7 +49,7 @@ export function TokenPage() {
     return (
       <main className="page center">
         <Spinner />
-        <p>從鏈上讀取 token…</p>
+        <p>Reading token from chain…</p>
       </main>
     )
   }
@@ -58,7 +58,7 @@ export function TokenPage() {
     return (
       <main className="page">
         <p className="error">{error ?? 'Token not found'}</p>
-        <Link to="/">← 回列表</Link>
+        <Link to="/">← Works</Link>
       </main>
     )
   }
@@ -93,7 +93,11 @@ export function TokenPage() {
         </div>
 
         <aside className="aside">
-          <button type="button" className="text-back" onClick={() => navigate(backTo)}>
+          <button
+            type="button"
+            className="text-back"
+            onClick={() => navigate(backTo)}
+          >
             ← Back
           </button>
           <h1 className="token-title">{title}</h1>
@@ -121,8 +125,8 @@ export function TokenPage() {
             )}
           </dl>
           <p className="hint">
-            預覽來自 IPFS；按 Run live 會以正確 seed
-            在受限 iframe 執行生成程式。
+            Preview from IPFS. Run live executes the generator with the correct
+            seed in a sandboxed iframe.
           </p>
         </aside>
       </section>
