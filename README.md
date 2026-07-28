@@ -64,7 +64,16 @@ push 到 `main` 後，GitHub Actions 會建置並發佈到 GitHub Pages。
 
 策展清單：`src/data/projects.ts`（自己維護）。
 
-目前：Chaos Research · Chaos Memory · Chaos Culture
+目前：
+
+| slug | projectId | editions |
+|------|-----------|----------|
+| chaos-research | `v2:5101` | 256 |
+| chaos-memory | `v2:11068` | 300 |
+| collage-1 | `v2:11805` | 333 |
+| chaos-culture | `v2:13447` | 1024 |
+| turner-light | `v2:17146` | 300 |
+| avlab-23 | `v2:19928` | 48 |
 
 ## Stack
 
