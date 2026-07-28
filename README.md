@@ -15,7 +15,56 @@ Reads projects and tokens from Tezos, resolves IPFS covers/previews, and runs co
 - Chaos Research: hide test mints `#1`–`#5`
 - Collage: exact name filter so older genesis `COLLAGE` tokens are not mixed in
 
-## Embed
+## Embed (WordPress / iframe modules)
+
+Interactive bits are served from GitHub Pages as **minimal chrome** routes under `/embed/…`. Keep essay copy, dates, and site nav on WordPress; iframe only the cover live / edition gallery / token viewer.
+
+Optional query: `?theme=dark` (default) or `?theme=light`.
+
+### Chaos Research (pilot for [aluanwang.com long-form](https://aluanwang.com/long-form/chaosresearch/))
+
+Suggested page structure on WordPress:
+
+1. Existing English essay (unchanged)
+2. Cover live iframe (replaces / complements static hero image)
+3. Editions gallery iframe (replaces static image gallery)
+4. Meta row as needed; fxhash links can point to objkt or self-hosted live
+
+```html
+<!-- Cover live (previewHash) -->
+<iframe
+  src="https://ileivoivm.github.io/fxhash2aluan/embed/chaos-research/cover"
+  title="Chaos Research — cover live"
+  style="width:100%;aspect-ratio:1;border:0;background:#0c0b0a"
+  loading="lazy"
+  allow="fullscreen"
+></iframe>
+
+<!-- Edition gallery (hides #1–#5; click opens full token page in a new tab) -->
+<iframe
+  src="https://ileivoivm.github.io/fxhash2aluan/embed/chaos-research/gallery"
+  title="Chaos Research — editions"
+  style="width:100%;min-height:720px;border:0;background:#0c0b0a"
+  loading="lazy"
+  allow="fullscreen"
+></iframe>
+```
+
+Optional single-token embed:
+
+```html
+<iframe
+  src="https://ileivoivm.github.io/fxhash2aluan/embed/token/KT1KEa8z6vWXDJrVqtMrAeDVzsvxat3kHaCE/269704"
+  title="Chaos Research edition — live"
+  style="width:100%;aspect-ratio:1;border:0;background:#0c0b0a"
+  loading="lazy"
+  allow="fullscreen"
+></iframe>
+```
+
+Other curated projects use the same pattern: `/embed/<slug>/cover` and `/embed/<slug>/gallery`.
+
+Full-app iframe (entire works UI) is still available:
 
 ```html
 <iframe
@@ -25,18 +74,6 @@ Reads projects and tokens from Tezos, resolves IPFS covers/previews, and runs co
   loading="lazy"
   allow="fullscreen"
   referrerpolicy="no-referrer-when-downgrade"
-></iframe>
-```
-
-Project page example:
-
-```html
-<iframe
-  src="https://ileivoivm.github.io/fxhash2aluan/works/chaos-memory"
-  title="Chaos Memory"
-  style="width:100%;min-height:80vh;border:0"
-  loading="lazy"
-  allow="fullscreen"
 ></iframe>
 ```
 
@@ -71,8 +108,12 @@ Manual check: **Settings → Pages → Source: GitHub Actions**.
 |------|---------|
 | `/` | Project grid (covers + titles from chain) |
 | `/works/:slug` | Project cover + iteration gallery |
+| `/works/:slug/live` | Cover live (`previewHash`) |
 | `/token/chaos-memory-106` | Sample: Chaos Memory #106 |
 | `/token/:contract/:tokenId` | Any GENTK token (preview, live, objkt) |
+| `/embed/:slug/cover` | Embed: cover live only |
+| `/embed/:slug/gallery` | Embed: edition grid (opens token in new tab) |
+| `/embed/token/:contract/:tokenId` | Embed: single token viewer |
 
 ## Curated projects
 

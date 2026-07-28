@@ -480,3 +480,64 @@ a {
 .error {
   color: var(--danger);
 }
+
+/* ── Embed modules (iframe-friendly, minimal chrome) ── */
+
+.shell.embed-shell {
+  min-height: 100%;
+}
+
+.embed {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.embed .viewer {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.embed .stage {
+  border: 0;
+  min-height: min(100vw, 100dvh);
+}
+
+.embed .artwork-stage,
+.embed .artwork-stage img,
+.embed .artwork-stage iframe {
+  min-height: min(100vw, 100dvh);
+}
+
+.embed .gallery {
+  padding: 0.75rem;
+}
+
+.embed .gallery-toolbar {
+  margin-bottom: 0.75rem;
+}
+
+.module.center {
+  min-height: 40vh;
+  display: grid;
+  place-content: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+/* Optional light theme for embeds: ?theme=light */
+html[data-embed-theme='light'] {
+  --bg: #f4f0ea;
+  --fg: #1a1612;
+  --muted: #6b635c;
+  --line: rgba(26, 22, 18, 0.14);
+  --card: #fffdf9;
+  --accent: #9a5b3c;
+  --danger: #b84a3c;
+}
+
+html[data-embed-theme='light'] body {
+  background: var(--bg);
+}
