@@ -1,7 +1,29 @@
 import { Link } from 'react-router-dom'
-import { useProject } from '@whitehash/react'
+import { useGatewayImage, useProject } from '@whitehash/react'
 import { Spinner, editionsLabel } from '@whitehash/ui'
 import { ARTIST, PROJECTS, type CuratedProject } from '../data/projects'
+
+function ProjectCover({
+  uri,
+  chain,
+  alt,
+}: {
+  uri: string | null
+  chain: CuratedProject['chain']
+  alt: string
+}) {
+  const { src, onError, failed } = useGatewayImage(uri, chain)
+
+  return (
+    <div className="card-cover">
+      {src && !failed ? (
+        <img src={src} alt={alt} onError={onError} loading="lazy" />
+      ) : (
+        <div className="card-cover-fallback" aria-hidden />
+      )}
+    </div>
+  )
+}
 
 function ProjectCard({ project }: { project: CuratedProject }) {
   const { project: onChain, loading, error } = useProject({
@@ -12,23 +34,27 @@ function ProjectCard({ project }: { project: CuratedProject }) {
   const title = onChain?.name ?? project.projectId
   const description = onChain?.description
   const editions = editionsLabel(onChain?.minted ?? null, onChain?.editions ?? null)
+  const coverUri = onChain?.displayUri ?? onChain?.thumbnailUri ?? null
 
   return (
     <Link className="card" to={`/works/${project.slug}`}>
-      <div className="card-top">
-        <h2>{loading ? '…' : title}</h2>
-        <span className="year">{project.projectId}</span>
+      <ProjectCover uri={coverUri} chain={project.chain} alt={title} />
+      <div className="card-body">
+        <div className="card-top">
+          <h2>{loading ? '…' : title}</h2>
+          <span className="year">{project.projectId}</span>
+        </div>
+        {error ? (
+          <p className="error">{error}</p>
+        ) : description ? (
+          <p className="card-desc">{description}</p>
+        ) : loading ? (
+          <p>
+            <Spinner />
+          </p>
+        ) : null}
+        {editions ? <p className="card-meta">{editions}</p> : null}
       </div>
-      {error ? (
-        <p className="error">{error}</p>
-      ) : description ? (
-        <p className="card-desc">{description}</p>
-      ) : loading ? (
-        <p>
-          <Spinner />
-        </p>
-      ) : null}
-      {editions ? <p className="card-meta">{editions}</p> : null}
     </Link>
   )
 }
