@@ -1,12 +1,21 @@
 # fxhash2aluan
 
-Self-hosted fxhash works for Aluan Wang (ileivoivm), powered by [Whitehash](https://whitehash.m3000.io/).
+Self-hosted gallery of [Aluan Wang](https://aluanwang.com) (ileivoivm) fxhash works, built with [Whitehash](https://whitehash.m3000.io/).
 
-Live: **https://ileivoivm.github.io/fxhash2aluan/**
+**Live:** https://ileivoivm.github.io/fxhash2aluan/  
+**Repo:** https://github.com/ileivoivm/fxhash2aluan
 
-Reads projects and tokens from Tezos, resolves IPFS previews, and runs correctly seeded live artwork in a sandboxed iframe — no fxhash platform backend.
+Reads projects and tokens from Tezos, resolves IPFS covers/previews, and runs correctly seeded live artwork in a sandboxed iframe — without the fxhash platform backend.
 
-## Embed on a personal site
+## Features
+
+- Curated project list with on-chain covers (`displayUri` / `thumbnailUri`)
+- Project pages with cover, chain metadata, and iteration grid
+- Token page: static preview + **Run live** + link to [objkt](https://objkt.com)
+- Chaos Research: hide test mints `#1`–`#5`
+- Collage: exact name filter so older genesis `COLLAGE` tokens are not mixed in
+
+## Embed
 
 ```html
 <iframe
@@ -19,7 +28,7 @@ Reads projects and tokens from Tezos, resolves IPFS previews, and runs correctly
 ></iframe>
 ```
 
-Project page:
+Project page example:
 
 ```html
 <iframe
@@ -34,47 +43,61 @@ Project page:
 ## Develop
 
 ```bash
+git clone git@github.com:ileivoivm/fxhash2aluan.git
 cd fxhash2aluan
 npm install
 npm run dev
 ```
 
-Default Vite `base` is `/fxhash2aluan/` (same as GitHub Pages). For root-path local dev:
+Open the Local URL Vite prints (base path is `/fxhash2aluan/`).
+
+Root-path local dev:
 
 ```bash
 VITE_BASE_PATH=/ npm run dev
 ```
 
+> `@whitehash/*` must come from the official npm registry. This repo includes `.npmrc` with `registry=https://registry.npmjs.org/`.
+
 ## Deploy
 
-Push to `main` → GitHub Actions builds and publishes Pages.
+Push to `main` → GitHub Actions builds and publishes GitHub Pages.
 
-Settings → Pages → Source: **GitHub Actions**.
+Manual check: **Settings → Pages → Source: GitHub Actions**.
 
 ## Routes
 
 | Path | Purpose |
 |------|---------|
-| `/` | Curated project list (titles/descriptions from chain) |
-| `/works/:slug` | Project gallery |
-| `/token/chaos-memory-106` | Chaos Memory #106 preview + Run live |
-| `/token/:contract/:tokenId` | Any GENTK token |
+| `/` | Project grid (covers + titles from chain) |
+| `/works/:slug` | Project cover + iteration gallery |
+| `/token/chaos-memory-106` | Sample: Chaos Memory #106 |
+| `/token/:contract/:tokenId` | Any GENTK token (preview, live, objkt) |
 
-## Data
+## Curated projects
 
-Curated refs only in `src/data/projects.ts` (slug ↔ on-chain `v2:<id>`). Display copy comes from Whitehash / chain metadata.
+Refs live in `src/data/projects.ts` (slug ↔ `v2:<issuer_id>`). Titles, descriptions, and covers come from chain metadata via Whitehash.
 
-| slug | projectId |
-|------|-----------|
-| chaos-research | `v2:5101` (hide iterations 1–5) |
-| chaos-memory | `v2:11068` |
-| collage-1 | `v2:11805` |
-| chaos-culture | `v2:13447` |
-| turner-light | `v2:17146` |
-| avlab-23 | `v2:19928` |
+| slug | projectId | notes |
+|------|-----------|--------|
+| `chaos-research` | `v2:5101` | hide iterations 1–5 |
+| `chaos-memory` | `v2:11068` | sample token #106 |
+| `collage-1` | `v2:11805` | exact-name filter vs genesis `COLLAGE` |
+| `chaos-culture` | `v2:13447` | |
+| `turner-light` | `v2:17146` | ileivoivm II |
+| `avlab-23` | `v2:19928` | ileivoivm II |
+
+### Objkt links
+
+| GENTK contract | objkt path |
+|----------------|------------|
+| `KT1KEa8z6vWXDJrVqtMrAeDVzsvxat3kHaCE` | `fxhashgenesis` |
+| `KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi` | `fxhash` |
+
+Example: [Chaos Research #231](https://objkt.com/tokens/fxhashgenesis/269937) → `https://objkt.com/tokens/fxhashgenesis/269937`
 
 ## Stack
 
-- Vite + React + TypeScript
-- `@whitehash/react` · `@whitehash/ui`
-- GitHub Pages
+- Vite 5 + React 19 + TypeScript
+- `@whitehash/react` · `@whitehash/ui` · `@whitehash/chain-reader`
+- React Router · GitHub Pages (Actions)
