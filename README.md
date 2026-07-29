@@ -5,62 +5,70 @@ Self-hosted gallery of [Aluan Wang](https://aluanwang.com) (ileivoivm) fxhash wo
 **Live:** https://ileivoivm.github.io/fxhash2aluan/  
 **Repo:** https://github.com/ileivoivm/fxhash2aluan
 
-Reads projects and tokens from Tezos, resolves IPFS covers/previews, and runs correctly seeded live artwork in a sandboxed iframe — without the fxhash platform backend.
+Durable data is **hosted Whitehash Archive JSON** (`whitehash-project-index@1` / `whitehash-token-index@1`). The UI loads indexes with `parseProjectIndex` / `parseTokenIndex`, then renders with `Artwork` (IPFS preview + sandboxed Run live). No fxhash platform backend.
+
+```text
+@whitehash/archive CLI  →  public/indexes/*.json  →  Pages
+                              ↓
+                    parseProjectIndex / parseTokenIndex
+                              ↓
+                         Artwork.* (live)
+```
 
 ## Features
 
-- Hosted **Whitehash project indexes** (`whitehash-project-index@1`) under `/indexes/`
-- Gallery / covers read indexes via `parseProjectIndex` (no live discovery for lists)
-- Sample tokens via `whitehash-token-index@1` + `parseTokenIndex`
-- Token page: static preview + **Run live** + link to [objkt](https://objkt.com)
+- Hosted project indexes under `/indexes/<slug>.json`
+- Gallery / home / work pages read indexes (no live TzKT discovery for lists)
+- Sample / cover live from index tokens (`parseTokenIndex` or iteration lookup)
+- Token page: preview + **Run live** + [objkt](https://objkt.com) link
 - Chaos Research: hide test mints `#1`–`#5`
-- Collage: exact name filter so older genesis `COLLAGE` tokens are not mixed in
+- Collage: exact-name filter vs older genesis `COLLAGE`
 
 ## Preserve (Whitehash Archive)
 
 Official tooling: [`@whitehash/archive`](https://www.npmjs.com/package/@whitehash/archive) · [CLI guide](https://whitehash.m3000.io/guide/cli/)
 
 ```bash
-# Project indexes (committed; served on Pages)
-npm run archive:projects
+# Both project + sample token indexes (committed; served on Pages)
+npm run archive
 
-# Sample token indexes (committed)
+# Or separately:
+npm run archive:projects
 npm run archive:samples
 
-# Cold offline folders for artist wallets (gitignored under archives/)
+# Cold offline folders (gitignored under archives/)
+# Uses official `wallet` + `verify` (CLI 0.0.1)
 npm run archive:cold
 npm run archive:verify
 ```
 
-Outputs:
-
-| Path | Format | Deployed? |
+| Path | Format | On Pages? |
 |------|--------|-----------|
-| `public/indexes/<slug>.json` | `whitehash-project-index@1` | Yes (Pages) |
+| `public/indexes/<slug>.json` | `whitehash-project-index@1` | Yes |
 | `public/indexes/tokens/<slug>-N.json` | `whitehash-token-index@1` | Yes |
-| `archives/*` | offline wallet gallery + integrity | No (local / cold storage) |
+| `archives/*` | offline wallet gallery + integrity | No (local cold storage) |
 
-Example hosted index: https://ileivoivm.github.io/fxhash2aluan/indexes/chaos-research.json
+Hosted indexes:
 
-Refresh indexes after curation changes, then commit the JSON. CI workflow **Archive refresh** can regenerate indexes on demand (`workflow_dispatch`).
+- https://ileivoivm.github.io/fxhash2aluan/indexes/chaos-research.json
+- https://ileivoivm.github.io/fxhash2aluan/indexes/chaos-memory.json
+- https://ileivoivm.github.io/fxhash2aluan/indexes/collage-1.json
+- https://ileivoivm.github.io/fxhash2aluan/indexes/chaos-culture.json
+- https://ileivoivm.github.io/fxhash2aluan/indexes/turner-light.json
+- https://ileivoivm.github.io/fxhash2aluan/indexes/avlab-23.json
+
+After curation changes: run `npm run archive`, commit the JSON, push. Or run GitHub Action **Archive refresh** (`workflow_dispatch`) to open a PR with regenerated indexes.
 
 ## Embed (WordPress / iframe modules)
 
-Interactive bits are served from GitHub Pages as **minimal chrome** routes under `/embed/…`. Keep essay copy, dates, and site nav on WordPress; iframe only the cover live / edition gallery / token viewer.
+Serve interactive bits from Pages under `/embed/…`. Keep essay copy and nav on WordPress.
 
 Optional query: `?theme=dark` (default) or `?theme=light`.
 
-### Chaos Research (pilot for [aluanwang.com long-form](https://aluanwang.com/long-form/chaosresearch/))
-
-Suggested page structure on WordPress:
-
-1. Existing English essay (unchanged)
-2. Cover live iframe (replaces / complements static hero image)
-3. Editions gallery iframe (replaces static image gallery)
-4. Meta row as needed; fxhash links can point to objkt or self-hosted live
+### Chaos Research ([long-form](https://aluanwang.com/long-form/chaosresearch/))
 
 ```html
-<!-- Cover live (previewHash) -->
+<!-- Cover live (curated sample edition from archive index) -->
 <iframe
   src="https://ileivoivm.github.io/fxhash2aluan/embed/chaos-research/cover"
   title="Chaos Research — cover live"
@@ -69,7 +77,7 @@ Suggested page structure on WordPress:
   allow="fullscreen"
 ></iframe>
 
-<!-- Edition gallery (hides #1–#5; click opens full token page in a new tab) -->
+<!-- Editions (hides #1–#5; click opens token page in a new tab) -->
 <iframe
   src="https://ileivoivm.github.io/fxhash2aluan/embed/chaos-research/gallery"
   title="Chaos Research — editions"
@@ -91,9 +99,9 @@ Optional single-token embed:
 ></iframe>
 ```
 
-Other curated projects use the same pattern: `/embed/<slug>/cover` and `/embed/<slug>/gallery`.
+Same pattern for other slugs: `/embed/<slug>/cover` and `/embed/<slug>/gallery`.
 
-Full-app iframe (entire works UI) is still available:
+Full-app iframe:
 
 ```html
 <iframe
@@ -123,38 +131,38 @@ Root-path local dev:
 VITE_BASE_PATH=/ npm run dev
 ```
 
-> `@whitehash/*` must come from the official npm registry. This repo includes `.npmrc` with `registry=https://registry.npmjs.org/`.
+> `@whitehash/*` must come from the official npm registry (see `.npmrc`).
 
 ## Deploy
 
-Push to `main` → GitHub Actions builds and publishes GitHub Pages.
+Push to `main` → **Deploy GitHub Pages** builds `dist` (includes `public/indexes/**`).
 
-Manual check: **Settings → Pages → Source: GitHub Actions**.
+Settings → Pages → Source: **GitHub Actions**.
 
 ## Routes
 
 | Path | Purpose |
 |------|---------|
-| `/` | Project grid (from hosted project indexes) |
-| `/works/:slug` | Project cover + iteration gallery (index) |
+| `/` | Project grid from hosted indexes |
+| `/works/:slug` | Cover + iteration gallery |
 | `/works/:slug/live` | Cover live (sample edition from index) |
-| `/token/chaos-memory-106` | Sample: Chaos Memory #106 (token index) |
-| `/token/:contract/:tokenId` | Any GENTK token (preview, live, objkt) |
-| `/indexes/<slug>.json` | Hosted `whitehash-project-index@1` |
-| `/indexes/tokens/*.json` | Hosted `whitehash-token-index@1` |
-| `/embed/:slug/cover` | Embed: cover live only |
-| `/embed/:slug/gallery` | Embed: edition grid (opens token in new tab) |
-| `/embed/token/:contract/:tokenId` | Embed: single token viewer |
+| `/token/chaos-memory-106` | Chaos Memory #106 via token index |
+| `/token/:contract/:tokenId` | Any GENTK token (chain read + live + objkt) |
+| `/indexes/<slug>.json` | `whitehash-project-index@1` |
+| `/indexes/tokens/*.json` | `whitehash-token-index@1` |
+| `/embed/:slug/cover` | Embed: cover live |
+| `/embed/:slug/gallery` | Embed: edition grid |
+| `/embed/token/:contract/:tokenId` | Embed: single token |
 
 ## Curated projects
 
-Refs live in `src/data/projects.ts` (slug ↔ `v2:<issuer_id>`). Titles, descriptions, covers, and iterations come from hosted Whitehash indexes (`parseProjectIndex` / `parseTokenIndex`).
+Refs in [`src/data/projects.ts`](src/data/projects.ts) (slug ↔ `v2:<issuer_id>`). Display copy and iterations come from hosted indexes.
 
 | slug | projectId | notes |
 |------|-----------|--------|
-| `chaos-research` | `v2:5101` | hide iterations 1–5 |
-| `chaos-memory` | `v2:11068` | sample token #106 |
-| `collage-1` | `v2:11805` | exact-name filter vs genesis `COLLAGE` |
+| `chaos-research` | `v2:5101` | hide `#1`–`#5`; sample `#6` |
+| `chaos-memory` | `v2:11068` | sample `#106` |
+| `collage-1` | `v2:11805` | exact-name filter |
 | `chaos-culture` | `v2:13447` | |
 | `turner-light` | `v2:17146` | ileivoivm II |
 | `avlab-23` | `v2:19928` | ileivoivm II |
@@ -166,10 +174,10 @@ Refs live in `src/data/projects.ts` (slug ↔ `v2:<issuer_id>`). Titles, descrip
 | `KT1KEa8z6vWXDJrVqtMrAeDVzsvxat3kHaCE` | `fxhashgenesis` |
 | `KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi` | `fxhash` |
 
-Example: [Chaos Research #231](https://objkt.com/tokens/fxhashgenesis/269937) → `https://objkt.com/tokens/fxhashgenesis/269937`
+Example: [Chaos Research #231](https://objkt.com/tokens/fxhashgenesis/269937)
 
 ## Stack
 
 - Vite 5 + React 19 + TypeScript
-- `@whitehash/react` · `@whitehash/ui` · `@whitehash/chain-reader` · `@whitehash/archive`
+- `@whitehash/archive` · `@whitehash/chain-reader` · `@whitehash/react` · `@whitehash/ui`
 - React Router · GitHub Pages (Actions)
