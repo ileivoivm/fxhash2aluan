@@ -19,11 +19,15 @@ function ArtworkCard({
   token: WhitehashToken
   onOpen?: (token: WhitehashToken) => void
 }) {
+  const iteration = tokenIteration(token)
+  const label = iteration != null ? `#${iteration}` : `#${token.tokenId}`
+
   return (
     <button
       type="button"
       className="token-card"
       onClick={onOpen ? () => onOpen(token) : undefined}
+      aria-label={token.name ?? label}
     >
       <Card.Root>
         <Card.Media>
@@ -32,7 +36,7 @@ function ArtworkCard({
           </Artwork.Root>
         </Card.Media>
         <Card.Body>
-          <Card.Title>{token.name ?? `#${token.tokenId}`}</Card.Title>
+          <Card.Title>{label}</Card.Title>
           <Card.Meta>
             <Badge>{chainLabel(token.chain)}</Badge>
           </Card.Meta>
