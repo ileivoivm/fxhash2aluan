@@ -1,0 +1,58 @@
+{
+  "format": "whitehash-token-index@1",
+  "generatedAt": "2026-07-29T02:18:58.934Z",
+  "project": {
+    "chain": "tezos:mainnet",
+    "id": "v2:11068",
+    "name": "chaos memory",
+    "description": "Ｉ Ｌ Ｅ Ｉ Ｖ\nＬ Ｅ Ｉ Ｖ Ｉ\nＥ Ｉ Ｖ Ｉ Ｌ\nＩ Ｖ Ｉ Ｌ Ｅ\nＶ Ｉ Ｌ Ｅ Ｉ\n\nＯ Ｉ Ｖ Ｍ  \nＩ Ｖ Ｍ Ｏ  \nＶ Ｍ Ｏ Ｉ  \nＭ Ｏ Ｉ Ｖ\n\nＴｈｅ ｃａｕｓｅ ｃｏｍｅｓ ｂｅｆｏｒｅ ｔｈｅ ｅｆｆｅｃｔ。\nＴｈａｔ’ｓ ｊｕｓｔ ｔｈｅ ｗａｙ ｗｅ ｓａｗ ｔｈｅ ｔｉｍｅ。",
+    "displayUri": "ipfs://QmPeyX8FhugbggUf3yKarmuRs9U1JfxUXWmLaKCzuNkTSw",
+    "thumbnailUri": "ipfs://QmRv75XuXnRPJgDJ3T2267gDw7UA966yRkdAw2u3a4rKNy",
+    "editions": 300,
+    "minted": 300,
+    "captureSettings": {
+      "mode": "VIEWPORT",
+      "triggerMode": "FN_TRIGGER",
+      "gpu": false,
+      "resolution": {
+        "x": 800,
+        "y": 800
+      }
+    }
+  },
+  "token": {
+    "chain": "tezos:mainnet",
+    "contract": "KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi",
+    "tokenId": "600560",
+    "name": "chaos memory #106",
+    "description": "Ｉ Ｌ Ｅ Ｉ Ｖ\nＬ Ｅ Ｉ Ｖ Ｉ\nＥ Ｉ Ｖ Ｉ Ｌ\nＩ Ｖ Ｉ Ｌ Ｅ\nＶ Ｉ Ｌ Ｅ Ｉ\n\nＯ Ｉ Ｖ Ｍ  \nＩ Ｖ Ｍ Ｏ  \nＶ Ｍ Ｏ Ｉ  \nＭ Ｏ Ｉ Ｖ\n\nＴｈｅ ｃａｕｓｅ ｃｏｍｅｓ ｂｅｆｏｒｅ ｔｈｅ ｅｆｆｅｃｔ。\nＴｈａｔ’ｓ ｊｕｓｔ ｔｈｅ ｗａｙ ｗｅ ｓａｗ ｔｈｅ ｔｉｍｅ。",
+    "iterationHash": "oo72vdVc6eYAcj9dbjYpsTdo6T5vUixuTyBGyRFh7zFdBJn8tzW",
+    "artifactUri": "ipfs://QmSsGpDggV6uFUtu6pfR4dy3hZBMU9Rsu1xzTznD9DgMWT?fxhash=oo72vdVc6eYAcj9dbjYpsTdo6T5vUixuTyBGyRFh7zFdBJn8tzW",
+    "displayUri": "ipfs://QmR7Tb9M48mRW6KANesRrXYqSgNMJkkWSj5vCL2Yt3ijVu",
+    "thumbnailUri": "ipfs://QmUgjKYm39PqZTYPAsD564zWEu9A1bHebnMnRUSJzuj91N",
+    "generatorUri": "ipfs://QmSsGpDggV6uFUtu6pfR4dy3hZBMU9Rsu1xzTznD9DgMWT",
+    "attributes": [],
+    "assigned": true,
+    "metadataUri": null,
+    "raw": {
+      "name": "chaos memory #106",
+      "tags": [
+        "aluanwang",
+        "ileivoivm",
+        "chaosMemory",
+        "chaosResearch"
+      ],
+      "symbol": "GENTK",
+      "version": "0.2",
+      "decimals": "0",
+      "attributes": [],
+      "displayUri": "ipfs://QmR7Tb9M48mRW6KANesRrXYqSgNMJkkWSj5vCL2Yt3ijVu",
+      "artifactUri": "ipfs://QmSsGpDggV6uFUtu6pfR4dy3hZBMU9Rsu1xzTznD9DgMWT?fxhash=oo72vdVc6eYAcj9dbjYpsTdo6T5vUixuTyBGyRFh7zFdBJn8tzW",
+      "description": "Ｉ Ｌ Ｅ Ｉ Ｖ\nＬ Ｅ Ｉ Ｖ Ｉ\nＥ Ｉ Ｖ Ｉ Ｌ\nＩ Ｖ Ｉ Ｌ Ｅ\nＶ Ｉ Ｌ Ｅ Ｉ\n\nＯ Ｉ Ｖ Ｍ  \nＩ Ｖ Ｍ Ｏ  \nＶ Ｍ Ｏ Ｉ  \nＭ Ｏ Ｉ Ｖ\n\nＴｈｅ ｃａｕｓｅ ｃｏｍｅｓ ｂｅｆｏｒｅ ｔｈｅ ｅｆｆｅｃｔ。\nＴｈａｔ’ｓ ｊｕｓｔ ｔｈｅ ｗａｙ ｗｅ ｓａｗ ｔｈｅ ｔｉｍｅ。",
+      "generatorUri": "ipfs://QmSsGpDggV6uFUtu6pfR4dy3hZBMU9Rsu1xzTznD9DgMWT",
+      "thumbnailUri": "ipfs://QmUgjKYm39PqZTYPAsD564zWEu9A1bHebnMnRUSJzuj91N",
+      "iterationHash": "oo72vdVc6eYAcj9dbjYpsTdo6T5vUixuTyBGyRFh7zFdBJn8tzW",
+      "authenticityHash": "5f90c93f52d4a93118346b3e90414876c0bac2c6c0b3dbde54da37df965a4f74"
+    }
+  }
+}

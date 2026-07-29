@@ -29,3 +29,7 @@ dist-ssr
 /chaosCulture.html
 /collage.html
 /turnerlight.html
+
+# Cold offline artwork bytes (verify locally; do not ship on Pages)
+/archives/*
+!/archives/.gitkeep

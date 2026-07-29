@@ -1,9 +1,7 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react'
-import { useProject } from '@whitehash/react'
+import { useMemo, useState, type ReactNode } from 'react'
 import {
   Artwork,
   Badge,
-  Button,
   Card,
   SortToggle,
   Spinner,
@@ -11,7 +9,8 @@ import {
 } from '@whitehash/ui'
 import type { ListOrder, WhitehashToken } from '@whitehash/chain-reader'
 import type { CuratedProject } from '../data/projects'
-import { shouldShowToken } from '../lib/tokens'
+import { useProjectIndex } from '../lib/useProjectIndex'
+import { shouldShowToken, tokenIteration } from '../lib/tokens'
 
 function ArtworkCard({
   token,
@@ -61,37 +60,23 @@ export function ProjectGalleryEmbed({
   className,
 }: ProjectGalleryEmbedProps) {
   const [order, setOrder] = useState<ListOrder>('oldest')
+  const { data, loading, error } = useProjectIndex(projectRef.slug)
 
-  const { project, tokens, loading, error, hasMore, loadMore } = useProject(
-    { chain: projectRef.chain, id: projectRef.projectId },
-    { order },
-  )
-
-  const visibleTokens = useMemo(
-    () =>
-      tokens.filter((token) =>
-        shouldShowToken(token, {
-          projectName: project?.name,
-          hideIterationsThrough: projectRef.hideIterationsThrough,
-        }),
-      ),
-    [tokens, project?.name, projectRef.hideIterationsThrough],
-  )
-
-  useEffect(() => {
-    if (!project?.name) return
-    if (loading || !hasMore) return
-    if (tokens.length === 0) return
-    if (visibleTokens.length >= 12) return
-    void loadMore()
-  }, [
-    project?.name,
-    loading,
-    hasMore,
-    tokens.length,
-    visibleTokens.length,
-    loadMore,
-  ])
+  const visibleTokens = useMemo(() => {
+    if (!data) return []
+    const filtered = data.tokens.filter((token) =>
+      shouldShowToken(token, {
+        projectName: data.project.name,
+        hideIterationsThrough: projectRef.hideIterationsThrough,
+      }),
+    )
+    const sorted = [...filtered].sort((a, b) => {
+      const ia = tokenIteration(a) ?? 0
+      const ib = tokenIteration(b) ?? 0
+      return order === 'oldest' ? ia - ib : ib - ia
+    })
+    return sorted
+  }, [data, order, projectRef.hideIterationsThrough])
 
   return (
     <section className={`gallery module ${className ?? ''}`}>
@@ -121,16 +106,11 @@ export function ProjectGalleryEmbed({
       )}
 
       <div className="gallery-footer">
-        {loading && visibleTokens.length > 0 ? (
-          <p className="meta">Loading more…</p>
-        ) : null}
-        {!loading && hasMore ? (
-          <Button variant="link" onClick={() => void loadMore()}>
-            Load More
-          </Button>
-        ) : null}
         {!loading && visibleTokens.length === 0 && !error ? (
           <p className="meta">No minted iterations found.</p>
+        ) : null}
+        {data && !data.complete ? (
+          <p className="meta">Index incomplete — re-run npm run archive:projects.</p>
         ) : null}
       </div>
     </section>

@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "archive:projects": "node scripts/archive-projects.mjs",
+    "archive:samples": "node scripts/archive-samples.mjs",
+    "archive:cold": "node scripts/archive-cold.mjs",
+    "archive:verify": "node scripts/archive-verify.mjs",
+    "archive": "npm run archive:projects && npm run archive:samples"
   },
   "dependencies": {
     "@whitehash/react": "^0.0.1",
@@ -21,6 +26,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "@whitehash/archive": "^0.0.1",
     "oxlint": "^1.71.0",
     "typescript": "~6.0.2",
     "vite": "^5.4.19"

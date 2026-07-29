@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { useProject } from '@whitehash/react'
 import { getProject, type CuratedProject } from '../data/projects'
+import { useProjectIndex } from '../lib/useProjectIndex'
 import { ProjectCoverLive } from '../modules/ProjectCoverLive'
 
 function ProjectLiveContent({
@@ -11,11 +11,8 @@ function ProjectLiveContent({
   slug: string
 }) {
   const navigate = useNavigate()
-  const { project } = useProject({
-    chain: projectRef.chain,
-    id: projectRef.projectId,
-  })
-  const title = project?.name ?? projectRef.projectId
+  const { data } = useProjectIndex(slug)
+  const title = data?.project.name ?? projectRef.projectId
   const backTo = `/works/${slug}`
 
   return (

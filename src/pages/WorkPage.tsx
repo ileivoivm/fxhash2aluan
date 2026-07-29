@@ -1,10 +1,10 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { useProject } from '@whitehash/react'
 import { Button, editionsLabel } from '@whitehash/ui'
 import type { WhitehashToken } from '@whitehash/chain-reader'
 import { ProjectCover } from '../components/ProjectCover'
 import { getProject, type CuratedProject } from '../data/projects'
-import { projectCoverPreview } from '../lib/projectCover'
+import { useProjectIndex } from '../lib/useProjectIndex'
+import { findTokenInIndex } from '../lib/projectIndex'
 import { ProjectGalleryEmbed } from '../modules/ProjectGalleryEmbed'
 
 function WorkPageContent({
@@ -15,10 +15,7 @@ function WorkPageContent({
   slug: string
 }) {
   const navigate = useNavigate()
-  const { project, loading } = useProject({
-    chain: projectRef.chain,
-    id: projectRef.projectId,
-  })
+  const { data, loading, error } = useProjectIndex(slug)
 
   const onOpenToken = (token: WhitehashToken) => {
     navigate(
@@ -26,13 +23,20 @@ function WorkPageContent({
     )
   }
 
+  const project = data?.project
   const title = project?.name ?? projectRef.projectId
   const label = project
     ? editionsLabel(project.minted, project.editions)
     : ''
   const coverUri = project?.displayUri ?? project?.thumbnailUri ?? null
-  const coverLive = project ? projectCoverPreview(project) : null
-  const coverHref = coverLive ? `/works/${slug}/live` : null
+
+  const sample = projectRef.sampleToken
+  const sampleToken =
+    sample && data
+      ? findTokenInIndex(data.tokens, sample.contract, sample.tokenId)
+      : undefined
+  const coverHref =
+    sampleToken || sample ? `/works/${slug}/live` : null
 
   return (
     <main className="page wide">
@@ -69,6 +73,7 @@ function WorkPageContent({
         )}
         <div className="work-head-copy">
           <h1>{title}</h1>
+          {error ? <p className="error">{error}</p> : null}
           {project?.description ? <p>{project.description}</p> : null}
           <p className="meta">
             {projectRef.projectId}

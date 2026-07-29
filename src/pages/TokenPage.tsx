@@ -69,6 +69,11 @@ export function TokenPage() {
       <TokenViewer
         input={input}
         titleFallback={isSample ? SAMPLE.label : undefined}
+        archiveSample={
+          isSample
+            ? { slug: 'chaos-memory', iteration: 106 }
+            : undefined
+        }
         showMeta
         showObjkt
       />

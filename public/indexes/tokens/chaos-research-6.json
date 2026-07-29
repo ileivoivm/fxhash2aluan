@@ -1,0 +1,58 @@
+{
+  "format": "whitehash-token-index@1",
+  "generatedAt": "2026-07-29T02:18:56.320Z",
+  "project": {
+    "chain": "tezos:mainnet",
+    "id": "v1:5101",
+    "name": "Chaos Research",
+    "description": "No feature, no attribute, believe what you see.\n\n*mouseClick in live mode to save in png.\n\nileivoivm (AluanWang) - @IOivm, Dec 2021",
+    "displayUri": "ipfs://QmWayq38MUGoLxHqFxDJ7yc5aiiho2nXeT2RFb3euXPZtu",
+    "thumbnailUri": "ipfs://QmVXp4cdYzKZx8MceXrfdSZ4Ti82gdCJyE58LKKJXbsZqF",
+    "editions": 256,
+    "minted": 256,
+    "captureSettings": {
+      "mode": "VIEWPORT",
+      "triggerMode": "FN_TRIGGER",
+      "resolution": {
+        "x": 800,
+        "y": 800
+      }
+    }
+  },
+  "token": {
+    "chain": "tezos:mainnet",
+    "contract": "KT1KEa8z6vWXDJrVqtMrAeDVzsvxat3kHaCE",
+    "tokenId": "269704",
+    "name": "Chaos Research #6",
+    "description": "No feature, no attribute, believe what you see.\n\n*mouseClick in live mode to save in png.\n\nileivoivm (AluanWang) - @IOivm, Dec 2021",
+    "iterationHash": "opW7xoobtznXbrtAYAWTFL6yg871dZNxm23d45LVPrBaYMVvaBo",
+    "artifactUri": "ipfs://QmeALg31LnC9tAQAhFEp6pGvpCMboZUEAM8H5gpZBSsWKz?fxhash=opW7xoobtznXbrtAYAWTFL6yg871dZNxm23d45LVPrBaYMVvaBo",
+    "displayUri": "ipfs://QmNXTy4Z7R9QEGDw57Qts3MJewsANYkL5g76MKUMe7u7Le",
+    "thumbnailUri": "ipfs://QmUUypMwKDFmUdeQzbDGfTadaV5k4uTQWfPwgeiPF2AUeD",
+    "generatorUri": "ipfs://QmeALg31LnC9tAQAhFEp6pGvpCMboZUEAM8H5gpZBSsWKz",
+    "attributes": [],
+    "assigned": true,
+    "metadataUri": null,
+    "raw": {
+      "name": "Chaos Research #6",
+      "tags": [
+        "aluanwang",
+        "p5js",
+        "ileivoivm",
+        "ChaosResearch",
+        "GoodVibrations"
+      ],
+      "symbol": "GENTK",
+      "version": "0.2",
+      "decimals": "0",
+      "attributes": [],
+      "displayUri": "ipfs://QmNXTy4Z7R9QEGDw57Qts3MJewsANYkL5g76MKUMe7u7Le",
+      "artifactUri": "ipfs://QmeALg31LnC9tAQAhFEp6pGvpCMboZUEAM8H5gpZBSsWKz?fxhash=opW7xoobtznXbrtAYAWTFL6yg871dZNxm23d45LVPrBaYMVvaBo",
+      "description": "No feature, no attribute, believe what you see.\n\n*mouseClick in live mode to save in png.\n\nileivoivm (AluanWang) - @IOivm, Dec 2021",
+      "generatorUri": "ipfs://QmeALg31LnC9tAQAhFEp6pGvpCMboZUEAM8H5gpZBSsWKz",
+      "thumbnailUri": "ipfs://QmUUypMwKDFmUdeQzbDGfTadaV5k4uTQWfPwgeiPF2AUeD",
+      "iterationHash": "opW7xoobtznXbrtAYAWTFL6yg871dZNxm23d45LVPrBaYMVvaBo",
+      "authenticityHash": "01f572fe074d56a53210c872853aa1738966ec785da733ca8f83c302e194e2f6"
+    }
+  }
+}

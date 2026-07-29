@@ -1,0 +1,42 @@
+name: Archive refresh
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: archive-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install
+        run: npm ci
+
+      - name: Regenerate project and sample indexes
+        run: npm run archive
+
+      - name: Open PR if indexes changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore: refresh Whitehash project/token indexes'
+          title: 'chore: refresh Whitehash archive indexes'
+          body: |
+            Regenerated `public/indexes/**` via `npm run archive` (`@whitehash/archive`).
+
+            Review diffs, then merge to redeploy GitHub Pages.
+          branch: chore/archive-refresh
+          delete-branch: true

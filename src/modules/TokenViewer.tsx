@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react'
 import { Artwork, Spinner } from '@whitehash/ui'
 import { useToken } from '@whitehash/react'
-import type { TokenInput } from '@whitehash/chain-reader'
+import type { TokenInput, WhitehashToken } from '@whitehash/chain-reader'
 import { objktTokenUrl } from '../lib/objkt'
+import { loadSampleToken } from '../lib/tokenIndex'
 
 export type TokenViewerProps = {
   input: TokenInput
@@ -10,6 +12,8 @@ export type TokenViewerProps = {
   showMeta?: boolean
   showObjkt?: boolean
   className?: string
+  /** Prefer hosted whitehash-token-index@1 when set. */
+  archiveSample?: { slug: string; iteration: number }
 }
 
 export function TokenViewer({
@@ -18,14 +22,55 @@ export function TokenViewer({
   showMeta = true,
   showObjkt = true,
   className,
+  archiveSample,
 }: TokenViewerProps) {
-  const { token, loading, error } = useToken(input)
+  const chainResult = useToken(archiveSample ? null : input)
+  const [archiveToken, setArchiveToken] = useState<WhitehashToken | null>(null)
+  const [archiveLoading, setArchiveLoading] = useState(Boolean(archiveSample))
+  const [archiveError, setArchiveError] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!archiveSample) {
+      setArchiveToken(null)
+      setArchiveLoading(false)
+      setArchiveError(null)
+      return
+    }
+    let cancelled = false
+    setArchiveLoading(true)
+    setArchiveError(null)
+    void loadSampleToken(archiveSample.slug, archiveSample.iteration)
+      .then((token) => {
+        if (cancelled) return
+        setArchiveToken(token)
+        setArchiveLoading(false)
+      })
+      .catch((err: unknown) => {
+        if (cancelled) return
+        setArchiveToken(null)
+        setArchiveError(err instanceof Error ? err.message : String(err))
+        setArchiveLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [archiveSample?.slug, archiveSample?.iteration])
+
+  const loading = archiveSample ? archiveLoading : chainResult.loading
+  const error = archiveSample
+    ? archiveError
+    : chainResult.error
+  const token = archiveSample ? archiveToken : chainResult.token
 
   if (loading) {
     return (
       <div className={`module center ${className ?? ''}`}>
         <Spinner />
-        <p>Reading token from chain…</p>
+        <p>
+          {archiveSample
+            ? 'Loading token from archive index…'
+            : 'Reading token from chain…'}
+        </p>
       </div>
     )
   }
@@ -86,20 +131,11 @@ export function TokenViewer({
                 <dd className="mono">{token.iterationHash}</dd>
               </div>
             )}
-            {showObjkt && (
-              <div>
-                <dt>Marketplace</dt>
-                <dd>
-                  <a href={objktUrl} target="_blank" rel="noreferrer">
-                    objkt.com
-                  </a>
-                </dd>
-              </div>
-            )}
           </dl>
           <p className="hint">
-            Preview from IPFS. Run live executes the generator with the correct
-            seed in a sandboxed iframe.
+            {archiveSample
+              ? 'Loaded via parseTokenIndex from a hosted whitehash-token-index@1.'
+              : 'Preview from IPFS. Run live executes the generator with the correct seed in a sandboxed iframe.'}
           </p>
         </aside>
       )}

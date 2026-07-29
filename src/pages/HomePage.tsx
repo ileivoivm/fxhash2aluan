@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom'
-import { useProject } from '@whitehash/react'
 import { Spinner, editionsLabel } from '@whitehash/ui'
 import { ProjectCover } from '../components/ProjectCover'
 import { ARTIST, PROJECTS, type CuratedProject } from '../data/projects'
+import { useProjectIndex } from '../lib/useProjectIndex'
 
 function ProjectCard({ project }: { project: CuratedProject }) {
-  const { project: onChain, loading, error } = useProject({
-    chain: project.chain,
-    id: project.projectId,
-  })
+  const { data, loading, error } = useProjectIndex(project.slug)
 
-  const title = onChain?.name ?? project.projectId
-  const description = onChain?.description
-  const editions = editionsLabel(onChain?.minted ?? null, onChain?.editions ?? null)
-  const coverUri = onChain?.displayUri ?? onChain?.thumbnailUri ?? null
+  const title = data?.project.name ?? project.projectId
+  const description = data?.project.description
+  const editions = editionsLabel(
+    data?.project.minted ?? null,
+    data?.project.editions ?? null,
+  )
+  const coverUri =
+    data?.project.displayUri ?? data?.project.thumbnailUri ?? null
 
   return (
     <Link className="card" to={`/works/${project.slug}`}>
