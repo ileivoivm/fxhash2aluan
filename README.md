@@ -21,7 +21,7 @@ Durable data is **hosted Whitehash Archive JSON** (`whitehash-project-index@1` /
 - Gallery / home / work pages read indexes (no live TzKT discovery for lists)
 - Sample / cover live from index tokens (`parseTokenIndex` or iteration lookup)
 - Token page: preview + **Run live** + [objkt](https://objkt.com) link
-- Chaos Research: hide test mints `#1`–`#5`
+- Chaos Research: drop shared placeholder thumbs (keep real `#1`–`#n`)
 - Collage: exact-name filter vs older genesis `COLLAGE`
 
 ## Preserve (Whitehash Archive)
@@ -77,7 +77,7 @@ Optional query: `?theme=dark` (default) or `?theme=light`.
   allow="fullscreen"
 ></iframe>
 
-<!-- Editions (hides #1–#5; click opens token page in a new tab) -->
+<!-- Editions (placeholder-thumb duplicates filtered; click opens token page) -->
 <iframe
   src="https://ileivoivm.github.io/fxhash2aluan/embed/chaos-research/gallery"
   title="Chaos Research — editions"
@@ -160,7 +160,7 @@ Refs in [`src/data/projects.ts`](src/data/projects.ts) (slug ↔ `v2:<issuer_id>
 
 | slug | projectId | notes |
 |------|-----------|--------|
-| `chaos-research` | `v2:5101` | hide `#1`–`#5`; sample `#6` |
+| `chaos-research` | `v2:5101` | filter placeholder thumbs; sample `#6` |
 | `chaos-memory` | `v2:11068` | sample `#106` |
 | `collage-1` | `v2:11805` | exact-name filter |
 | `chaos-culture` | `v2:13447` | |

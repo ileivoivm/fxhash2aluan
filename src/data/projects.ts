@@ -8,6 +8,11 @@ export type CuratedProject = {
   chain: Extract<ChainId, 'tezos:mainnet'>
   /** Hide iterations 1..N (test mints). Applied in the UI only. */
   hideIterationsThrough?: number
+  /**
+   * Drop tokens whose thumbnailUri is in this list (shared placeholders /
+   * false duplicates in the project index).
+   */
+  excludeThumbnailUris?: readonly string[]
   sampleToken?: {
     contract: string
     tokenId: string
@@ -29,14 +34,20 @@ export const GENTK_GENESIS = 'KT1KEa8z6vWXDJrVqtMrAeDVzsvxat3kHaCE'
 /** GENTK v2 FA2 — Chaos Memory sample */
 export const GENTK_V2 = 'KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi'
 
+/**
+ * Shared placeholder thumb on ~24 false Chaos Research duplicates in the
+ * project index (same CID for many names). Real editions have unique thumbs.
+ */
+export const CHAOS_RESEARCH_PLACEHOLDER_THUMB =
+  'ipfs://Qmc7W7jKsZaWHamgeWQefctSTELAvGrouNwmwXpXMDhicu'
+
 export const PROJECTS: CuratedProject[] = [
   {
     slug: 'chaos-research',
     projectId: 'v2:5101',
     chain: 'tezos:mainnet',
-    /** First five mints are tests — do not show in the gallery. */
-    hideIterationsThrough: 5,
-    /** First non-test edition — cover opens this live view. */
+    excludeThumbnailUris: [CHAOS_RESEARCH_PLACEHOLDER_THUMB],
+    /** Cover live uses edition #6. */
     sampleToken: {
       contract: GENTK_GENESIS,
       tokenId: '269704',

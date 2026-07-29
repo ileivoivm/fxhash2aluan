@@ -25,11 +25,19 @@ export function shouldShowToken(
   options: {
     projectName?: string | null
     hideIterationsThrough?: number
+    excludeThumbnailUris?: readonly string[]
   } = {},
 ): boolean {
   if (
     options.projectName &&
     !tokenBelongsToProject(token, options.projectName)
+  ) {
+    return false
+  }
+  if (
+    options.excludeThumbnailUris?.length &&
+    token.thumbnailUri &&
+    options.excludeThumbnailUris.includes(token.thumbnailUri)
   ) {
     return false
   }

@@ -68,6 +68,7 @@ export function ProjectGalleryEmbed({
       shouldShowToken(token, {
         projectName: data.project.name,
         hideIterationsThrough: projectRef.hideIterationsThrough,
+        excludeThumbnailUris: projectRef.excludeThumbnailUris,
       }),
     )
     const sorted = [...filtered].sort((a, b) => {
@@ -76,7 +77,7 @@ export function ProjectGalleryEmbed({
       return order === 'oldest' ? ia - ib : ib - ia
     })
     return sorted
-  }, [data, order, projectRef.hideIterationsThrough])
+  }, [data, order, projectRef.hideIterationsThrough, projectRef.excludeThumbnailUris])
 
   return (
     <section className={`gallery module ${className ?? ''}`}>
