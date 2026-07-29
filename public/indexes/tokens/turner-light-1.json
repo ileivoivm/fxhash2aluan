@@ -1,0 +1,54 @@
+{
+  "format": "whitehash-token-index@1",
+  "generatedAt": "2026-07-29T03:22:19.014Z",
+  "project": {
+    "chain": "tezos:mainnet",
+    "id": "v2:17146",
+    "name": "Turner Light",
+    "description": "'Light is therefore colour' - J.M.W Turner\n\nThe shadows of the future are the light I emit now, and\nI can only keep moving forward towards the core of the planet.",
+    "displayUri": "ipfs://QmWHEtikW5UQi3r7M66s9zUqc3ZTMkGaXfw6ADbnQHRaAT",
+    "thumbnailUri": "ipfs://QmPXr8EuzDUuJFW357C1P3myKF2vd3gLLcmsVMnqFwJj1t",
+    "editions": 300,
+    "minted": 300,
+    "captureSettings": {
+      "mode": "CANVAS",
+      "triggerMode": "FN_TRIGGER",
+      "gpu": false,
+      "canvasSelector": "#sketch"
+    }
+  },
+  "token": {
+    "chain": "tezos:mainnet",
+    "contract": "KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi",
+    "tokenId": "1052759",
+    "name": "Turner Light #1",
+    "description": "'Light is therefore colour' - J.M.W Turner\n\nThe shadows of the future are the light I emit now, and\nI can only keep moving forward towards the core of the planet.",
+    "iterationHash": "onmLGMBNS19gMKPa9MXfgayKa4Egj1tQ7xBgeik1u7e7fom5yPE",
+    "artifactUri": "ipfs://QmYYoEZhhfiN5o7BepGfMNfP8r1NTG8uZ3qPpMWSXzXW6v?fxhash=onmLGMBNS19gMKPa9MXfgayKa4Egj1tQ7xBgeik1u7e7fom5yPE",
+    "displayUri": "ipfs://QmYZ1rZ7AsASydE2dmuqNCeYyyyCTuWEULJS1KUvjVk25g",
+    "thumbnailUri": "ipfs://QmZXVAnBzWsm2Z39G6uD5vRTTBLd6wmRo8oksmuwyEfpT4",
+    "generatorUri": "ipfs://QmYYoEZhhfiN5o7BepGfMNfP8r1NTG8uZ3qPpMWSXzXW6v",
+    "attributes": [],
+    "assigned": true,
+    "metadataUri": null,
+    "raw": {
+      "name": "Turner Light #1",
+      "tags": [
+        "ileivoivm",
+        "aluanwang",
+        "TurnerLight"
+      ],
+      "symbol": "GENTK",
+      "version": "0.2",
+      "decimals": "0",
+      "attributes": true,
+      "displayUri": "ipfs://QmYZ1rZ7AsASydE2dmuqNCeYyyyCTuWEULJS1KUvjVk25g",
+      "artifactUri": "ipfs://QmYYoEZhhfiN5o7BepGfMNfP8r1NTG8uZ3qPpMWSXzXW6v?fxhash=onmLGMBNS19gMKPa9MXfgayKa4Egj1tQ7xBgeik1u7e7fom5yPE",
+      "description": "'Light is therefore colour' - J.M.W Turner\n\nThe shadows of the future are the light I emit now, and\nI can only keep moving forward towards the core of the planet.",
+      "generatorUri": "ipfs://QmYYoEZhhfiN5o7BepGfMNfP8r1NTG8uZ3qPpMWSXzXW6v",
+      "thumbnailUri": "ipfs://QmZXVAnBzWsm2Z39G6uD5vRTTBLd6wmRo8oksmuwyEfpT4",
+      "iterationHash": "onmLGMBNS19gMKPa9MXfgayKa4Egj1tQ7xBgeik1u7e7fom5yPE",
+      "authenticityHash": "9855b0ce37909f03765cbded67cc2b499c165a0a4d8ac96c2063773a99362ef3"
+    }
+  }
+}

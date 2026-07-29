@@ -1,0 +1,211 @@
+{
+  "format": "whitehash-token-index@1",
+  "generatedAt": "2026-07-29T03:22:16.052Z",
+  "project": {
+    "chain": "tezos:mainnet",
+    "id": "v2:13447",
+    "name": "Chaos Culture",
+    "description": "\"Chaos Culture\" is part of the fxhash interactive minting experience at The Ever-Evolving World of Art, Art Basel Hong-Kong, 2022.\n\n《西遊記》第一回:「混沌未分天地亂，茫茫渺渺無人見。」\n\nChaos Culture is the final chapter of this series. There is a legend in the East that before Pan Gu opened up the sky and created the earth, the world was a chaotic place, and no one knew its appearance. And I have always been fascinated by this mythical story since he was a child.\n\nThese three works have a father-son relationship, Research > Memory > Culture, with each work re-growing through the remnants of the previous work, depending on its image. From the beginning of the creative coding, I like the concept of recursion the most. Here I experiment with my central thinking through this iterative relationship so that the work is not only the shadow of the artist but also the pulling force of repetition.\n\n\"混沌\" Chaos in Eastern culture represents the initial state of things. This state is consistent with what we believe in generative art: Anything can happen if different forces are applied. Letting chaos grow out of order and then destroying it, the iterative process, is like my usual dialogue with myself, and maybe it's all just a diary.\n\nThrough these three series of works, whether I can eventually find everything in my childhood fantasy, I am not sure yet. The only thing I can be sure of is that I will continue to explore.\n\n- Click the mouse to save an artwork.\n- Collectors who own this NFT have the right to print the work.\n\nArtist: Aluan Wang (ileivoivm).\nMade with p5js and glsl.",
+    "displayUri": "ipfs://QmTL22hSXbN633Fpj3WXAki43SFZX1vQPcR22o9HKZ8FS4",
+    "thumbnailUri": "ipfs://QmczuwRBaNwR1ZpjXa1SCsUQ96pqRtiUb3jyDKvD2T39C4",
+    "editions": 1024,
+    "minted": 1004,
+    "captureSettings": {
+      "mode": "CANVAS",
+      "triggerMode": "FN_TRIGGER",
+      "gpu": false,
+      "canvasSelector": "#defaultCanvas0"
+    }
+  },
+  "token": {
+    "chain": "tezos:mainnet",
+    "contract": "KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi",
+    "tokenId": "740827",
+    "name": "Chaos Culture #1",
+    "description": "\"Chaos Culture\" is part of the fxhash interactive minting experience at The Ever-Evolving World of Art, Art Basel Hong-Kong, 2022.\n\n《西遊記》第一回:「混沌未分天地亂，茫茫渺渺無人見。」\n\nChaos Culture is the final chapter of this series. There is a legend in the East that before Pan Gu opened up the sky and created the earth, the world was a chaotic place, and no one knew its appearance. And I have always been fascinated by this mythical story since he was a child.\n\nThese three works have a father-son relationship, Research > Memory > Culture, with each work re-growing through the remnants of the previous work, depending on its image. From the beginning of the creative coding, I like the concept of recursion the most. Here I experiment with my central thinking through this iterative relationship so that the work is not only the shadow of the artist but also the pulling force of repetition.\n\n\"混沌\" Chaos in Eastern culture represents the initial state of things. This state is consistent with what we believe in generative art: Anything can happen if different forces are applied. Letting chaos grow out of order and then destroying it, the iterative process, is like my usual dialogue with myself, and maybe it's all just a diary.\n\nThrough these three series of works, whether I can eventually find everything in my childhood fantasy, I am not sure yet. The only thing I can be sure of is that I will continue to explore.\n\n- Click the mouse to save an artwork.\n- Collectors who own this NFT have the right to print the work.\n\nArtist: Aluan Wang (ileivoivm).\nMade with p5js and glsl.",
+    "iterationHash": "opZQCAcwRnBVBL8hw2mszwou22UGhWFqn9CPgGHF8oGwxksZLms",
+    "artifactUri": "ipfs://QmeVQNMEEJZX5sNrh3jw9uShjLKssxtmjLarybnLfAQuJj?fxhash=opZQCAcwRnBVBL8hw2mszwou22UGhWFqn9CPgGHF8oGwxksZLms",
+    "displayUri": "ipfs://QmdPrSmuw4vNjDH86gSM2h9Hg5CxJsbKPgQkFQf9Da7kwq",
+    "thumbnailUri": "ipfs://QmR9YgP7irgFpiUk4K4XCgmv5DDyv9UxDYuw8ttpqLXPdJ",
+    "generatorUri": "ipfs://QmeVQNMEEJZX5sNrh3jw9uShjLKssxtmjLarybnLfAQuJj",
+    "attributes": [
+      {
+        "name": "Ptn",
+        "value": "4"
+      },
+      {
+        "name": "LayerMode",
+        "value": "DIFFERENCE"
+      },
+      {
+        "name": "Layout",
+        "value": "0"
+      },
+      {
+        "name": "Invert",
+        "value": "false"
+      },
+      {
+        "name": "PaperId",
+        "value": "9"
+      },
+      {
+        "name": "FrameId",
+        "value": "0"
+      },
+      {
+        "name": "Tones",
+        "value": "true"
+      },
+      {
+        "name": "GoldLine",
+        "value": "0"
+      },
+      {
+        "name": "EffectVol",
+        "value": "3"
+      },
+      {
+        "name": "EffectMagn",
+        "value": "8"
+      },
+      {
+        "name": "EffectZoom",
+        "value": "1"
+      },
+      {
+        "name": "EffectType",
+        "value": "0"
+      },
+      {
+        "name": "ScanNum",
+        "value": "0"
+      },
+      {
+        "name": "RectNum",
+        "value": "28"
+      },
+      {
+        "name": "BigRect",
+        "value": "4"
+      },
+      {
+        "name": "RectMode",
+        "value": "BLEND"
+      },
+      {
+        "name": "GadColor",
+        "value": "6"
+      },
+      {
+        "name": "ShapeType",
+        "value": "0"
+      },
+      {
+        "name": "lineType",
+        "value": "0"
+      }
+    ],
+    "assigned": true,
+    "metadataUri": null,
+    "raw": {
+      "name": "Chaos Culture #1",
+      "tags": [
+        "ABHK2022",
+        "Art Basel",
+        "Hong-Kong 2022",
+        "AluanWang",
+        "ileivoivm",
+        "ChaosCulture"
+      ],
+      "symbol": "GENTK",
+      "version": "0.2",
+      "decimals": "0",
+      "attributes": [
+        {
+          "name": "Ptn",
+          "value": "4"
+        },
+        {
+          "name": "LayerMode",
+          "value": "DIFFERENCE"
+        },
+        {
+          "name": "Layout",
+          "value": "0"
+        },
+        {
+          "name": "Invert",
+          "value": false
+        },
+        {
+          "name": "PaperId",
+          "value": "9"
+        },
+        {
+          "name": "FrameId",
+          "value": "0"
+        },
+        {
+          "name": "Tones",
+          "value": true
+        },
+        {
+          "name": "GoldLine",
+          "value": "0"
+        },
+        {
+          "name": "EffectVol",
+          "value": "3"
+        },
+        {
+          "name": "EffectMagn",
+          "value": "8"
+        },
+        {
+          "name": "EffectZoom",
+          "value": "1"
+        },
+        {
+          "name": "EffectType",
+          "value": "0"
+        },
+        {
+          "name": "ScanNum",
+          "value": "0"
+        },
+        {
+          "name": "RectNum",
+          "value": "28"
+        },
+        {
+          "name": "BigRect",
+          "value": "4"
+        },
+        {
+          "name": "RectMode",
+          "value": "BLEND"
+        },
+        {
+          "name": "GadColor",
+          "value": "6"
+        },
+        {
+          "name": "ShapeType",
+          "value": "0"
+        },
+        {
+          "name": "lineType",
+          "value": "0"
+        }
+      ],
+      "displayUri": "ipfs://QmdPrSmuw4vNjDH86gSM2h9Hg5CxJsbKPgQkFQf9Da7kwq",
+      "artifactUri": "ipfs://QmeVQNMEEJZX5sNrh3jw9uShjLKssxtmjLarybnLfAQuJj?fxhash=opZQCAcwRnBVBL8hw2mszwou22UGhWFqn9CPgGHF8oGwxksZLms",
+      "description": "\"Chaos Culture\" is part of the fxhash interactive minting experience at The Ever-Evolving World of Art, Art Basel Hong-Kong, 2022.\n\n《西遊記》第一回:「混沌未分天地亂，茫茫渺渺無人見。」\n\nChaos Culture is the final chapter of this series. There is a legend in the East that before Pan Gu opened up the sky and created the earth, the world was a chaotic place, and no one knew its appearance. And I have always been fascinated by this mythical story since he was a child.\n\nThese three works have a father-son relationship, Research > Memory > Culture, with each work re-growing through the remnants of the previous work, depending on its image. From the beginning of the creative coding, I like the concept of recursion the most. Here I experiment with my central thinking through this iterative relationship so that the work is not only the shadow of the artist but also the pulling force of repetition.\n\n\"混沌\" Chaos in Eastern culture represents the initial state of things. This state is consistent with what we believe in generative art: Anything can happen if different forces are applied. Letting chaos grow out of order and then destroying it, the iterative process, is like my usual dialogue with myself, and maybe it's all just a diary.\n\nThrough these three series of works, whether I can eventually find everything in my childhood fantasy, I am not sure yet. The only thing I can be sure of is that I will continue to explore.\n\n- Click the mouse to save an artwork.\n- Collectors who own this NFT have the right to print the work.\n\nArtist: Aluan Wang (ileivoivm).\nMade with p5js and glsl.",
+      "generatorUri": "ipfs://QmeVQNMEEJZX5sNrh3jw9uShjLKssxtmjLarybnLfAQuJj",
+      "thumbnailUri": "ipfs://QmR9YgP7irgFpiUk4K4XCgmv5DDyv9UxDYuw8ttpqLXPdJ",
+      "iterationHash": "opZQCAcwRnBVBL8hw2mszwou22UGhWFqn9CPgGHF8oGwxksZLms",
+      "authenticityHash": "a459f62a616f98af113c840905867e29055ab3f9edfb79ebeded262d0e44f8e0"
+    }
+  }
+}

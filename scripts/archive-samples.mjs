@@ -24,6 +24,30 @@ const SAMPLES = [
     contract: 'KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi',
     tokenId: '600560',
   },
+  {
+    slug: 'collage-1',
+    iteration: 1,
+    contract: 'KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi',
+    tokenId: '642092',
+  },
+  {
+    slug: 'chaos-culture',
+    iteration: 1,
+    contract: 'KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi',
+    tokenId: '740827',
+  },
+  {
+    slug: 'turner-light',
+    iteration: 1,
+    contract: 'KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi',
+    tokenId: '1052759',
+  },
+  {
+    slug: 'avlab-23',
+    iteration: 1,
+    contract: 'KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi',
+    tokenId: '1603210',
+  },
 ]
 
 const bin = join(root, 'node_modules', '@whitehash', 'archive', 'dist', 'index.js')

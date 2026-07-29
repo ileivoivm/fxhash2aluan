@@ -19,7 +19,8 @@ Durable data is **hosted Whitehash Archive JSON** (`whitehash-project-index@1` /
 
 - Hosted project indexes under `/indexes/<slug>.json`
 - Gallery / home / work pages read indexes (no live TzKT discovery for lists)
-- Sample / cover live from index tokens (`parseTokenIndex` or iteration lookup)
+- Cover · Run live uses on-chain `previewHash` (official project cover), not a minted edition
+- Sample token indexes for deep links / archive samples
 - Token page: preview + **Run live** + [objkt](https://objkt.com) link
 - Chaos Research: drop shared placeholder thumbs (keep real `#1`–`#n`)
 - Collage: exact-name filter vs older genesis `COLLAGE`
@@ -162,10 +163,10 @@ Refs in [`src/data/projects.ts`](src/data/projects.ts) (slug ↔ `v2:<issuer_id>
 |------|-----------|--------|
 | `chaos-research` | `v2:5101` | filter placeholder thumbs; sample `#6` |
 | `chaos-memory` | `v2:11068` | sample `#106` |
-| `collage-1` | `v2:11805` | exact-name filter |
-| `chaos-culture` | `v2:13447` | |
-| `turner-light` | `v2:17146` | ileivoivm II |
-| `avlab-23` | `v2:19928` | ileivoivm II |
+| `collage-1` | `v2:11805` | exact-name filter; sample `#1` |
+| `chaos-culture` | `v2:13447` | sample `#1` |
+| `turner-light` | `v2:17146` | ileivoivm II; sample `#1` |
+| `avlab-23` | `v2:19928` | ileivoivm II; sample `#1` |
 
 ### Objkt links
 

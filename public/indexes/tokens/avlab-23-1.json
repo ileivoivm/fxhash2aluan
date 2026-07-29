@@ -1,0 +1,56 @@
+{
+  "format": "whitehash-token-index@1",
+  "generatedAt": "2026-07-29T03:22:22.103Z",
+  "project": {
+    "chain": "tezos:mainnet",
+    "id": "v2:19928",
+    "name": "AVLab 23",
+    "description": "Between 2013 and 2014, I plan to produce approximately 30 audiovisual experiments demonstrating different relations between sound and image. \n\nhttps://vimeo.com/channels/avlab\n\nI sincerely believe that the essence of good art is the same. Is it possible that an excellent visual layout can also produce a good sound melody? Let's see.\n\n",
+    "displayUri": "ipfs://QmTMjKALmsPoqVs5rbpPJEQ3bEeuwKYkjkguijT19Ci8RE",
+    "thumbnailUri": "ipfs://QmQ9z8nkpHAsCMUKitWudRsyX58S2eY64vzNHsF1MR1n42",
+    "editions": 48,
+    "minted": 30,
+    "captureSettings": {
+      "mode": "VIEWPORT",
+      "triggerMode": "FN_TRIGGER",
+      "gpu": false,
+      "resolution": {
+        "x": 1200,
+        "y": 1200
+      }
+    }
+  },
+  "token": {
+    "chain": "tezos:mainnet",
+    "contract": "KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi",
+    "tokenId": "1603210",
+    "name": "AVLab 23 #1",
+    "description": "Between 2013 and 2014, I plan to produce approximately 30 audiovisual experiments demonstrating different relations between sound and image. \n\nhttps://vimeo.com/channels/avlab\n\nI sincerely believe that the essence of good art is the same. Is it possible that an excellent visual layout can also produce a good sound melody? Let's see.\n\n",
+    "iterationHash": "opZ56Z53BXDTFwQ9aG7kX8NiP7YKADqKrwtFf5TUUDwY8uJpeyh",
+    "artifactUri": "ipfs://QmcAy26jwFxUeivyNXnp19iNJTHhyPsj4xuA5riVqDhyWV/?fxhash=opZ56Z53BXDTFwQ9aG7kX8NiP7YKADqKrwtFf5TUUDwY8uJpeyh&fxiteration=1&fxminter=tz1SLRzGqX9fuKPx1PAkrDxCvaetr524is11",
+    "displayUri": "ipfs://QmWYVkqaiANPeAZCvvzKcPkxsekgGh7h7ME7dPr2AoKrff",
+    "thumbnailUri": "ipfs://QmRhwWAc421E3n1Cja62DMN4wr7Zj8xN4aRWDwVSpKACJM",
+    "generatorUri": "ipfs://QmcAy26jwFxUeivyNXnp19iNJTHhyPsj4xuA5riVqDhyWV",
+    "attributes": [],
+    "assigned": true,
+    "metadataUri": null,
+    "raw": {
+      "name": "AVLab 23 #1",
+      "tags": [
+        "audiovisual",
+        "goodvibrations"
+      ],
+      "symbol": "GENTK",
+      "version": "0.2",
+      "decimals": "0",
+      "attributes": true,
+      "displayUri": "ipfs://QmWYVkqaiANPeAZCvvzKcPkxsekgGh7h7ME7dPr2AoKrff",
+      "artifactUri": "ipfs://QmcAy26jwFxUeivyNXnp19iNJTHhyPsj4xuA5riVqDhyWV/?fxhash=opZ56Z53BXDTFwQ9aG7kX8NiP7YKADqKrwtFf5TUUDwY8uJpeyh&fxiteration=1&fxminter=tz1SLRzGqX9fuKPx1PAkrDxCvaetr524is11",
+      "description": "Between 2013 and 2014, I plan to produce approximately 30 audiovisual experiments demonstrating different relations between sound and image. \n\nhttps://vimeo.com/channels/avlab\n\nI sincerely believe that the essence of good art is the same. Is it possible that an excellent visual layout can also produce a good sound melody? Let's see.\n\n",
+      "generatorUri": "ipfs://QmcAy26jwFxUeivyNXnp19iNJTHhyPsj4xuA5riVqDhyWV",
+      "thumbnailUri": "ipfs://QmRhwWAc421E3n1Cja62DMN4wr7Zj8xN4aRWDwVSpKACJM",
+      "iterationHash": "opZ56Z53BXDTFwQ9aG7kX8NiP7YKADqKrwtFf5TUUDwY8uJpeyh",
+      "authenticityHash": "adcd61aa69b159ccae324584330509f5fffaa694e2e962b7df266bccd0b39cb1"
+    }
+  }
+}

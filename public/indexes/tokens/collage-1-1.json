@@ -1,0 +1,92 @@
+{
+  "format": "whitehash-token-index@1",
+  "generatedAt": "2026-07-29T03:22:13.152Z",
+  "project": {
+    "chain": "tezos:mainnet",
+    "id": "v2:11805",
+    "name": "Collage",
+    "description": "Inspired by traditional Japanese wagami design. We use the iconic patterns of our previous projects to recreate this artwork. All the patterns are generated first and then used to build the scene. \n\nIn this project Aluan brings his delicate texture from his 'Chaos' series, Jinyao brings his beloved pattern from the 'Cloud' series and Wen brings his iconic pattern from the 'Maze'. 'Collage' is not just about mixing our style, but it is also about finding harmony among all the elements. 'Collage' is also about working together, in that we can create something that's difficult to achieve or imagine if we were working alone.\n\nEach piece contains the patterns of all the 3 artists, each artist has a certain number of patterns with different colors. Depending which artist you get, his pattern will be shown as the primary color theme while the pattern of the other 2 artists turns into grayscale to make the primary pattern with color stand out. \n\nThere are 7 different scenes included in this project, which are : Mountains, Waves, Lake, Hexagons, Tetrapods, Chrysanthemums and Lotus. We took great inspiration from the traditional Japanese design, and we discovered these are some of the most common elements in it. Therefore we decide to use them and reimagine them by mixing our patterns. \n\nThe title 'Collage' doesn't only apply to the visual style, but also to the code as well. In this project we mixed p5.js and Vanilla JS. While Aluan and Jinyao work with their patterns in p5. Wen gathered the patterns and recreated the full scene in Vanilla JS.\n\nIt is not difficult to imagine the reason why we form this collaboration is because we are all Taiwanese. However we are all based in different cities or even different countries. In this journey we learned about each other's style, inspirations and ways of working. We learn that despite the time and location difference, we have a lot in common. And one of the biggest things we all have in common is our love for this land and the people of Taiwan. Therefore we decided to donate 25% of the income from this project to the FAB DAO ( Formosa Art Bank.)\nFAB DAO is a non-profit organisation based in Taiwan that focuses on building a community that includes the features of charity, culture, and art by organising and selling non-profit NFTs. FAB DAO directs its advocacy towards minting non-profit NFTs, supporting artists in getting involved in web3, and providing blockchain education services.\n",
+    "displayUri": "ipfs://QmXh9cF5ST3mWdZXVLLMsp4Wj3VXtjuc4fCyWsEowxMRb8",
+    "thumbnailUri": "ipfs://QmbVB5sLzWJRG9vZEZ1nEeUJsAUK8qZDYMaYePVJ67ntkz",
+    "editions": 333,
+    "minted": 333,
+    "captureSettings": {
+      "mode": "CANVAS",
+      "triggerMode": "FN_TRIGGER",
+      "gpu": false,
+      "canvasSelector": "#main-canvas"
+    }
+  },
+  "token": {
+    "chain": "tezos:mainnet",
+    "contract": "KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi",
+    "tokenId": "642092",
+    "name": "Collage #1",
+    "description": "Inspired by traditional Japanese wagami design. We use the iconic patterns of our previous projects to recreate this artwork. All the patterns are generated first and then used to build the scene. \n\nIn this project Aluan brings his delicate texture from his 'Chaos' series, Jinyao brings his beloved pattern from the 'Cloud' series and Wen brings his iconic pattern from the 'Maze'. 'Collage' is not just about mixing our style, but it is also about finding harmony among all the elements. 'Collage' is also about working together, in that we can create something that's difficult to achieve or imagine if we were working alone.\n\nEach piece contains the patterns of all the 3 artists, each artist has a certain number of patterns with different colors. Depending which artist you get, his pattern will be shown as the primary color theme while the pattern of the other 2 artists turns into grayscale to make the primary pattern with color stand out. \n\nThere are 7 different scenes included in this project, which are : Mountains, Waves, Lake, Hexagons, Tetrapods, Chrysanthemums and Lotus. We took great inspiration from the traditional Japanese design, and we discovered these are some of the most common elements in it. Therefore we decide to use them and reimagine them by mixing our patterns. \n\nThe title 'Collage' doesn't only apply to the visual style, but also to the code as well. In this project we mixed p5.js and Vanilla JS. While Aluan and Jinyao work with their patterns in p5. Wen gathered the patterns and recreated the full scene in Vanilla JS.\n",
+    "iterationHash": "oo136YWfieGaptQHN9zyY7x8MZ2SMTX3iAdMqEai2Cdx6YdYLAY",
+    "artifactUri": "ipfs://Qmc4RPmkfE3AWKPZoJZRJLZ3txihLdkVpLRZJKStPCFXmL?fxhash=oo136YWfieGaptQHN9zyY7x8MZ2SMTX3iAdMqEai2Cdx6YdYLAY",
+    "displayUri": "ipfs://Qmef5CSLBmbwhVFD6FrMLKc9aHekJ5aWj398TUnWgnKXVe",
+    "thumbnailUri": "ipfs://QmcaLV5xZR24md37aYLWFWBZUF8PvrM33wLDjHnsh4KB5v",
+    "generatorUri": "ipfs://Qmc4RPmkfE3AWKPZoJZRJLZ3txihLdkVpLRZJKStPCFXmL",
+    "attributes": [
+      {
+        "name": "Primary Artist Style",
+        "value": "Yi-Wen Lin"
+      },
+      {
+        "name": "Theme",
+        "value": "Mountain"
+      },
+      {
+        "name": "Background Pattern",
+        "value": "Square"
+      },
+      {
+        "name": "Golden",
+        "value": "false"
+      }
+    ],
+    "assigned": true,
+    "metadataUri": null,
+    "raw": {
+      "name": "Collage #1",
+      "tags": [
+        "collage",
+        "fxcollab",
+        "fxc002",
+        "aluanwang",
+        "ileivoivm",
+        "JINYAOLIN",
+        "Yi-Wen LIN"
+      ],
+      "symbol": "GENTK",
+      "version": "0.2",
+      "decimals": "0",
+      "attributes": [
+        {
+          "name": "Primary Artist Style",
+          "value": "Yi-Wen Lin"
+        },
+        {
+          "name": "Theme",
+          "value": "Mountain"
+        },
+        {
+          "name": "Background Pattern",
+          "value": "Square"
+        },
+        {
+          "name": "Golden",
+          "value": false
+        }
+      ],
+      "displayUri": "ipfs://Qmef5CSLBmbwhVFD6FrMLKc9aHekJ5aWj398TUnWgnKXVe",
+      "artifactUri": "ipfs://Qmc4RPmkfE3AWKPZoJZRJLZ3txihLdkVpLRZJKStPCFXmL?fxhash=oo136YWfieGaptQHN9zyY7x8MZ2SMTX3iAdMqEai2Cdx6YdYLAY",
+      "description": "Inspired by traditional Japanese wagami design. We use the iconic patterns of our previous projects to recreate this artwork. All the patterns are generated first and then used to build the scene. \n\nIn this project Aluan brings his delicate texture from his 'Chaos' series, Jinyao brings his beloved pattern from the 'Cloud' series and Wen brings his iconic pattern from the 'Maze'. 'Collage' is not just about mixing our style, but it is also about finding harmony among all the elements. 'Collage' is also about working together, in that we can create something that's difficult to achieve or imagine if we were working alone.\n\nEach piece contains the patterns of all the 3 artists, each artist has a certain number of patterns with different colors. Depending which artist you get, his pattern will be shown as the primary color theme while the pattern of the other 2 artists turns into grayscale to make the primary pattern with color stand out. \n\nThere are 7 different scenes included in this project, which are : Mountains, Waves, Lake, Hexagons, Tetrapods, Chrysanthemums and Lotus. We took great inspiration from the traditional Japanese design, and we discovered these are some of the most common elements in it. Therefore we decide to use them and reimagine them by mixing our patterns. \n\nThe title 'Collage' doesn't only apply to the visual style, but also to the code as well. In this project we mixed p5.js and Vanilla JS. While Aluan and Jinyao work with their patterns in p5. Wen gathered the patterns and recreated the full scene in Vanilla JS.\n",
+      "generatorUri": "ipfs://Qmc4RPmkfE3AWKPZoJZRJLZ3txihLdkVpLRZJKStPCFXmL",
+      "thumbnailUri": "ipfs://QmcaLV5xZR24md37aYLWFWBZUF8PvrM33wLDjHnsh4KB5v",
+      "iterationHash": "oo136YWfieGaptQHN9zyY7x8MZ2SMTX3iAdMqEai2Cdx6YdYLAY",
+      "authenticityHash": "70e5998e82f01425e83ac269bd486508936509931dc953f9a2a98a03ad8243b3"
+    }
+  }
+}

@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { Artwork, Spinner } from '@whitehash/ui'
 import type { WhitehashToken } from '@whitehash/chain-reader'
 import type { CuratedProject } from '../data/projects'
+import { curatedCoverToken } from '../lib/projectCover'
 import { findTokenInIndex } from '../lib/projectIndex'
 import { useProjectIndex } from '../lib/useProjectIndex'
 import { loadSampleToken } from '../lib/tokenIndex'
+import { shouldShowToken, tokenIteration } from '../lib/tokens'
 
 type ProjectCoverLiveProps = {
   projectRef: CuratedProject
@@ -13,9 +15,37 @@ type ProjectCoverLiveProps = {
   className?: string
 }
 
+/** Fallback: curated sample, else lowest visible iteration from the project index. */
+function pickEditionToken(
+  projectRef: CuratedProject,
+  tokens: WhitehashToken[],
+  projectName: string | null | undefined,
+): WhitehashToken | undefined {
+  const sample = projectRef.sampleToken
+  if (sample) {
+    const curated = findTokenInIndex(tokens, sample.contract, sample.tokenId)
+    if (curated) return curated
+  }
+
+  const visible = tokens.filter((token) =>
+    shouldShowToken(token, {
+      projectName,
+      hideIterationsThrough: projectRef.hideIterationsThrough,
+      excludeThumbnailUris: projectRef.excludeThumbnailUris,
+    }),
+  )
+  if (visible.length === 0) return undefined
+
+  return [...visible].sort((a, b) => {
+    const ia = tokenIteration(a) ?? Number.POSITIVE_INFINITY
+    const ib = tokenIteration(b) ?? Number.POSITIVE_INFINITY
+    return ia - ib
+  })[0]
+}
+
 /**
- * Cover live prefers the curated sample token from the hosted project/token
- * indexes (Whitehash Archive). Falls back to loading the sample token index.
+ * Cover · Run live uses the official project previewHash cover first.
+ * Falls back to a sample / index edition only when cover metadata is missing.
  */
 export function ProjectCoverLive({
   projectRef,
@@ -28,28 +58,47 @@ export function ProjectCoverLive({
   const [token, setToken] = useState<WhitehashToken | null>(null)
   const [loadingToken, setLoadingToken] = useState(false)
   const [tokenError, setTokenError] = useState<string | null>(null)
+  const [isOfficialCover, setIsOfficialCover] = useState(false)
 
   const sample = projectRef.sampleToken
 
   useEffect(() => {
-    if (!sample) {
-      setToken(null)
-      setTokenError('No sampleToken configured for this project.')
-      return
-    }
-
-    const fromProject = data
-      ? findTokenInIndex(data.tokens, sample.contract, sample.tokenId)
-      : undefined
-
-    if (fromProject) {
-      setToken(fromProject)
+    const cover = curatedCoverToken(projectRef, data?.project.name)
+    if (cover) {
+      setToken(cover)
+      setIsOfficialCover(true)
       setTokenError(null)
       setLoadingToken(false)
       return
     }
 
+    setIsOfficialCover(false)
+
+    if (data) {
+      const fromProject = pickEditionToken(
+        projectRef,
+        data.tokens,
+        data.project.name,
+      )
+      if (fromProject) {
+        setToken(fromProject)
+        setTokenError(null)
+        setLoadingToken(false)
+        return
+      }
+    }
+
     if (indexLoading) return
+
+    if (!sample) {
+      setToken(null)
+      setTokenError(
+        data
+          ? 'No cover edition found in project index.'
+          : 'No cover / sampleToken configured and project index unavailable.',
+      )
+      return
+    }
 
     let cancelled = false
     setLoadingToken(true)
@@ -70,9 +119,9 @@ export function ProjectCoverLive({
     return () => {
       cancelled = true
     }
-  }, [data, indexLoading, projectRef.slug, sample])
+  }, [data, indexLoading, projectRef, sample])
 
-  const loading = indexLoading || loadingToken
+  const loading = (!projectRef.cover && indexLoading) || loadingToken
   const error = tokenError ?? indexError
   const title = data?.project.name ?? projectRef.projectId
 
@@ -80,7 +129,7 @@ export function ProjectCoverLive({
     return (
       <div className={`module center ${className ?? ''}`}>
         <Spinner />
-        <p>Loading cover from archive index…</p>
+        <p>Loading cover…</p>
       </div>
     )
   }
@@ -88,7 +137,7 @@ export function ProjectCoverLive({
   if (error || !token) {
     return (
       <div className={`module ${className ?? ''}`}>
-        <p className="error">{error ?? 'Cover token not found in index'}</p>
+        <p className="error">{error ?? 'Cover token not found'}</p>
       </div>
     )
   }
@@ -110,21 +159,27 @@ export function ProjectCoverLive({
         <aside className="aside">
           <h1 className="token-title">{title}</h1>
           <p className="meta">
-            Cover live · {token.name ?? `#${token.tokenId}`}
+            {isOfficialCover
+              ? 'Cover live · official previewHash'
+              : `Cover live · ${token.name ?? `#${token.tokenId}`}`}
           </p>
           <dl className="token-meta">
             <div>
               <dt>Project</dt>
               <dd>{projectRef.projectId}</dd>
             </div>
-            <div>
-              <dt>Contract</dt>
-              <dd className="mono">{token.contract}</dd>
-            </div>
-            <div>
-              <dt>Token ID</dt>
-              <dd>{token.tokenId}</dd>
-            </div>
+            {!isOfficialCover && (
+              <>
+                <div>
+                  <dt>Contract</dt>
+                  <dd className="mono">{token.contract}</dd>
+                </div>
+                <div>
+                  <dt>Token ID</dt>
+                  <dd>{token.tokenId}</dd>
+                </div>
+              </>
+            )}
             {token.iterationHash && (
               <div>
                 <dt>Hash</dt>
@@ -133,8 +188,9 @@ export function ProjectCoverLive({
             )}
           </dl>
           <p className="hint">
-            Live view uses the curated sample edition from the Whitehash project
-            / token index — not a synthetic previewHash cover.
+            {isOfficialCover
+              ? 'Live view uses the on-chain project cover (previewHash), not a minted edition.'
+              : 'Live view falls back to a curated sample edition from the archive index.'}
           </p>
         </aside>
       )}

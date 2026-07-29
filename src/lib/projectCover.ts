@@ -1,4 +1,5 @@
 import type { WhitehashProject, WhitehashToken } from '@whitehash/chain-reader'
+import type { CuratedProject } from '../data/projects'
 
 type ProjectRaw = {
   previewHash?: unknown
@@ -49,25 +50,69 @@ export function projectCoverPreview(project: WhitehashProject): {
   }
 }
 
+function coverTokenFromParts(input: {
+  chain: WhitehashToken['chain']
+  projectId: string
+  name: string | null | undefined
+  previewHash: string
+  generativeUri: string
+  displayUri?: string | null
+  thumbnailUri?: string | null
+  raw?: unknown
+}): WhitehashToken {
+  return {
+    chain: input.chain,
+    contract: 'project-cover',
+    tokenId: input.projectId,
+    name: input.name ? `${input.name} · cover` : 'Project cover',
+    description: null,
+    iterationHash: input.previewHash,
+    artifactUri: input.generativeUri,
+    displayUri: input.displayUri ?? null,
+    thumbnailUri: input.thumbnailUri ?? null,
+    generatorUri: input.generativeUri,
+    attributes: [],
+    assigned: true,
+    metadataUri: null,
+    raw: input.raw ?? null,
+  }
+}
+
 /** Synthetic token so Whitehash Artwork can Run live with the cover hash. */
 export function projectCoverToken(project: WhitehashProject): WhitehashToken | null {
   const preview = projectCoverPreview(project)
   if (!preview) return null
 
-  return {
+  return coverTokenFromParts({
     chain: project.chain,
-    contract: 'project-cover',
-    tokenId: project.id,
-    name: project.name ? `${project.name} · cover` : 'Project cover',
-    description: null,
-    iterationHash: preview.previewHash,
-    artifactUri: preview.generativeUri,
+    projectId: project.id,
+    name: project.name,
+    previewHash: preview.previewHash,
+    generativeUri: preview.generativeUri,
     displayUri: preview.displayUri,
     thumbnailUri: preview.thumbnailUri,
-    generatorUri: preview.generativeUri,
-    attributes: [],
-    assigned: true,
-    metadataUri: null,
     raw: project.raw,
-  }
+  })
+}
+
+/**
+ * Cover live from curated on-chain previewHash (official project cover),
+ * not a minted edition.
+ */
+export function curatedCoverToken(
+  projectRef: CuratedProject,
+  projectName?: string | null,
+): WhitehashToken | null {
+  const cover = projectRef.cover
+  if (!cover) return null
+
+  return coverTokenFromParts({
+    chain: projectRef.chain,
+    projectId: projectRef.projectId,
+    name: projectName,
+    previewHash: cover.previewHash,
+    generativeUri: cover.generativeUri,
+    displayUri: cover.displayUri,
+    thumbnailUri: cover.thumbnailUri,
+  })
 }

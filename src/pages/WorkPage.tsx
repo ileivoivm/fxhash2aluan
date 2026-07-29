@@ -4,7 +4,6 @@ import type { WhitehashToken } from '@whitehash/chain-reader'
 import { ProjectCover } from '../components/ProjectCover'
 import { getProject, type CuratedProject } from '../data/projects'
 import { useProjectIndex } from '../lib/useProjectIndex'
-import { findTokenInIndex } from '../lib/projectIndex'
 import { ProjectGalleryEmbed } from '../modules/ProjectGalleryEmbed'
 
 function WorkPageContent({
@@ -28,15 +27,16 @@ function WorkPageContent({
   const label = project
     ? editionsLabel(project.minted, project.editions)
     : ''
-  const coverUri = project?.displayUri ?? project?.thumbnailUri ?? null
+  const coverUri =
+    projectRef.cover?.displayUri ??
+    project?.displayUri ??
+    projectRef.cover?.thumbnailUri ??
+    project?.thumbnailUri ??
+    null
 
-  const sample = projectRef.sampleToken
-  const sampleToken =
-    sample && data
-      ? findTokenInIndex(data.tokens, sample.contract, sample.tokenId)
-      : undefined
-  const coverHref =
-    sampleToken || sample ? `/works/${slug}/live` : null
+  const coverHref = projectRef.cover || projectRef.sampleToken
+    ? `/works/${slug}/live`
+    : null
 
   return (
     <main className="page wide">
