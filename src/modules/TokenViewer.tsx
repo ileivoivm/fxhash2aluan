@@ -92,21 +92,21 @@ export function TokenViewer({
         <Artwork.Root token={token} className="artwork-stage">
           <Artwork.Image />
           <Artwork.Live />
-          <div className="stage-controls">
-            <Artwork.PlayButton playLabel="Run live" stopLabel="Stop" />
-            <Artwork.StatusBadge />
-            {showObjkt && (
-              <a
-                className="objkt-link"
-                href={objktUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                View on objkt ↗
-              </a>
-            )}
-          </div>
+          <Artwork.PlayButton playLabel="Run live" stopLabel="Stop" />
+          <Artwork.StatusBadge />
         </Artwork.Root>
+        {showObjkt && (
+          <div className="stage-controls">
+            <a
+              className="objkt-link"
+              href={objktUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View on objkt ↗
+            </a>
+          </div>
+        )}
       </div>
 
       {showMeta && (
@@ -129,6 +129,16 @@ export function TokenViewer({
               <div>
                 <dt>Hash</dt>
                 <dd className="mono">{token.iterationHash}</dd>
+              </div>
+            )}
+            {showObjkt && (
+              <div>
+                <dt>Marketplace</dt>
+                <dd>
+                  <a href={objktUrl} target="_blank" rel="noreferrer">
+                    objkt.com
+                  </a>
+                </dd>
               </div>
             )}
           </dl>
